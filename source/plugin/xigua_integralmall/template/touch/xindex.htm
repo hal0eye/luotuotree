@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="{CHARSET}">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta content="telephone=no" name="format-detection"/>
+  <title>{$navtitle}</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <link href="source/plugin/xigua_integralmall/static/base.css?t={$pluginversion}" rel="stylesheet" />
+  <style>{if $config[navbg]}.hnav{background-color:$config[navbg]}{/if}</style>
+  </head>
+<body>
+<div id="page-loading-overlay">
+  <div class="ajxloading"></div>
+</div>
+
+<div class="container_map_ami container_map">
+
+
+<div class="header cl">
+  {$config[logo]}
+  <!--{if $_G[uid]}--><a class="member-link" id="icon-dot-top" href="javascript:void(0);"><img src="source/plugin/xigua_integralmall/static/images/m3.png" /></a><!--{else}-->
+  <a href="$loginurl" class="member-link" >{lang xigua_integralmall:dl}</a>
+  <!--{/if}-->
+</div>
+<!--{if $_G[uid]}-->
+<div id="dot-top-mask">
+  <div id="dot-top">
+    <div class="cl">
+      <div class="hd_menu_img">
+        <a href="{if $wechat[wsq_allow]}http://wsq.discuz.com/?c=index&a=profile&f=wx&siteid=$wechat[wsq_siteid]&mobile=2{else}home.php?mod=space&uid=$_G[uid]&do=profile{/if}">
+          <img src="{avatar($_G[uid], 'big', 1)}">
+        </a>
+      </div>
+      <a href="javascript:void(0);" >
+        {lang xigua_integralmall:my}{$config[ctitle]}:<i class="js_coin">{$mycredict}</i>
+      </a>
+      <!--<a id="floatshare">share</a>-->
+      <!--{loop $rtnav $rtv}-->
+      <a href="$rtv[1]">$rtv[0]</a>
+      <!--{/loop}-->
+    </div>
+  </div>
+</div>
+<!--{/if}-->
+
+<!--{if $config[wsqnavi]}-->
+<div id="headerbar" class="cl">{eval echo hook_xigua_plugin('xigua_navigation_wsq');}</div>
+<!--{else}-->
+<!--{if $nav}-->
+  <div class="hnav">
+    <!--{loop $nav $nk $nv}-->
+    <a href="$nv[1]" {if strpos($nv[1], 'xigua_integralmall') !== false}class="current"{/if}>$nv[0]</a>
+    <!--{/loop}-->
+  </div>
+<!--{/if}-->
+<!--{/if}-->
+
+<div class="swipe cl">
+    <div class="swipe-wrap">
+<!--{loop $slderindex $pic}-->
+      <div><a href="{$pic[1]}"><img src="{$pic[0]}" /></a></div>
+<!--{/loop}-->
+    </div>
+    <nav class="bullets">
+      <ul class="position">
+<!--{loop $slderindex $k $pic}-->
+        <li {if $k==0}class="current"{/if}></li>
+<!--{/loop}-->
+      </ul>
+    </nav>
+</div>
+
+<div class="cl mb10">
+<!--{eval $idatalist = array('1' => $ilist[1],'3'=>$ilist[3], '2'=>$ilist[2], '4'=>$ilist[4], '5'=>$ilist[5]);}-->
+<!--{loop $idatalist $kk $vv}-->
+<!--{if $ilist[$kk]}-->
+  <div>
+  <div class="layout_title cl">
+    <h2>$htitle[$kk][0]</h2><span>$htitle[$kk][1]</span>
+    <div class="layout_menu cl">
+      <!--{if !$noheader}-->
+      <a href="plugin.php?id=xigua_integralmall&mtype={$kk}" class="layout_more">{lang xigua_integralmall:more}</a>
+      <!--{else}-->
+      <a href="plugin.php?id=xigua_integralmall" class="layout_more">{lang xigua_integralmall:back}</a>
+      <!--{/if}-->
+    </div>
+  </div>
+
+  <div class="layout_list">
+    <ul class="cl">
+      <!--{loop $ilist[$kk] $k $v}-->
+      <li>
+        <a href="{if $config[wsqlink] == 1}forum.php?mod=viewthread&tid={$v[tid]}{else}plugin.php?id=xigua_integralmall&operation=viewthread&tid={$v[tid]}{/if}" class="layout_pic">
+          <img src="{$v[attachment]}" >
+          <div class="layout_cont">
+            <h4>{$v[goodname]}</h4>
+            <div class="layout_tips cl">
+              <span class="fll"><em>{$v[sellprice]}</em>{$GLOBALS['_G']['setting']['extcredits'][$v['ccd']]['title']}</span>
+              <s class="fr">{lang xigua_integralmall:y}{$v[marketprice]}</s>
+              <!--{if $kk != 1}-->
+              <p class="c9 cb l22">{$v[give]}{lang xigua_integralmall:r}{lang xigua_integralmall:yi}$titles[$kk]</p>
+              <!--{else}-->
+              <p class="c9 cb l22">{if $v[leavenum]}{lang xigua_integralmall:shengyu1}{$v[leavenum]}{lang xigua_integralmall:jian}{else}{lang xigua_integralmall:fawan}{/if}</p>
+              <!--{/if}-->
+            </div>
+          </div>
+        </a>
+      </li>
+      <!--{/loop}-->
+    </ul>
+  </div>
+</div>
+<!--{/if}-->
+<!--{/loop}-->
+</div>
+
+<!--{if $noheader && $multi}-->
+<!--{eval $multi = str_replace(array('<div class="pg">', '</div>'), '', $multi);}-->
+  <div class="pager1"><div class="pg">
+    <!--{if $page==1}--><a href="javascript:void(0);" class="c9 prev">{lang xigua_integralmall:shang}</a><!--{/if}-->
+    {$multi}
+    <!--{if $page==$realpages}--><a href="javascript:void(0);" class="c9 nxt">{lang xigua_integralmall:xia}</a><!--{/if}-->
+  </div></div>
+<!--{/if}-->
+
+</div>
+
+<!--<div id="floatshare-mask">-->
+  <!--<div id="floatshare-box">-->
+    <!--<p class="share-title">shareto</p>-->
+    <!--<div class="cl share-list">-->
+      <!--<div class="share-item"><a id="wechat"><span>wechat</span></a></div>-->
+      <!--<div class="share-item"><a href="#"><span>weibo</span></a></div>-->
+      <!--<div class="share-item"><a href="#"><span>QQ</span></a></div>-->
+      <!--<div class="share-item"><a href="#"><span>qzone</span></a></div>-->
+      <!--<div class="share-item"><a href="#"><span>qweibo</span></a></div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<div id="wechat-mask">
+  <div id="wechat-guider"></div>
+</div>
+<div id="backtotop" class="backtotop"><span class="icon-vertical-align-top"></span></div>
+<script src="source/plugin/xigua_integralmall/static/jquery.min.js?t={$pluginversion}"></script>
+<script src="source/plugin/xigua_integralmall/static/custom.js?t={$pluginversion}"></script>
+
+<!--<div class="shopnav js-navmenu nav-on-bottom style-2 cl">
+  <div class="nav-menu has-menu-3">
+    <a class="home" href="index.php">首页</a>
+    <div class="divide">&nbsp;</div>
+    <div class="one">
+      <a href="plugin.php?id=wechat:access" class="mainmenu js-mainmenu"><i class="arrow-weixin"></i>微社区</a>
+    </div>
+    <div class="divide">&nbsp;</div>
+    <div class="one">
+      <a href="plugin.php?id=xigua_sign:index" class="mainmenu js-mainmenu"><i class="arrow-weixin"></i>每天签到</a>
+    </div>
+    <div class="divide">&nbsp;</div>
+    <div class="one">
+      <a href="plugin.php?id=xigua_integralmall:xigua_integralmall" class="mainmenu js-mainmenu"><i class="arrow-weixin"></i>积分商城</a>
+    </div>
+  </div>
+</div>-->
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!--{template common/header}-->
+<table class="table w100f">
+  <thead>
+  <tr><th colspan="4">{$titles[$idata[malltype]]}{lang xigua_integralmall:jilu}<strong class="ired1">{$idata[give]}</strong>{lang xigua_integralmall:ci}{$titles[$idata[malltype]]})
+    <a href="$config[ruleid]" class="icons iconsnone righttop"></a></th></tr>
+  </thead>
+  <tbody>
+  <!--{loop $ilist $k $vv}-->
+  <tr <!--{if ($k+1) %2==0}-->class="odd"<!--{/if}-->>
+    <td>{$vv[dateline]}</td>
+    <td>{$vv[username]}</td>
+    <td><strong class="ired2">{$vv[currentprice]}</strong>{$GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['unit']}{$GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['title']}</td>
+    <td>{$vv[status]}</td>
+  </tr>
+  <!--{/loop}-->
+  </tbody>
+</table>
+<!--{if $multi}-->
+<!--{eval $multi = str_replace(array('<div class="pg">', '</div>'), '', $multi);}-->
+<div class="pager1"><div class="pg">
+  <!--{if $page==1}--><a href="javascript:void(0);" class="c9 prev">{lang xigua_integralmall:shang}</a><!--{/if}-->
+  {$multi}
+  <!--{if $page==$realpages}--><a href="javascript:void(0);" class="c9 nxt">{lang xigua_integralmall:xia}</a><!--{/if}-->
+</div></div>
+<!--{/if}-->
+<!--{template common/footer}-->

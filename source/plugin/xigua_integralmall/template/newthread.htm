@@ -1,0 +1,326 @@
+<!--{block return}-->
+<style>
+.imgpreview{max-width:200px;*width:200px}
+.d{ float: none!important;
+text-indent: 999px!important;
+display: inline-block!important;
+vertical-align: middle!important;
+margin-top: 0!important;cursor:pointer}
+    #shuxing_c div{
+        margin-bottom:5px;
+    }
+</style>
+<div class="exfm cl" id="auc_op">
+  <input type="hidden" name="attachnew" value="1" />
+  <div class="sinf sppoll z">
+    <dl>
+
+      <dt><span class="rq">*</span><label for="goodkind">{lang xigua_integralmall:shangpinlx}:</label></dt>
+      <dd>
+        <span class="ftid">
+          <select name="goodkind" id="goodkind" width="50" class="ps" selecti="0" style="display:none;">
+          <!--{if $edit}-->
+              <option value="{$idata[goodkind]}" selected="selected">{$ini[goodkinds][$idata[goodkind]]}</option>
+          <!--{else}-->
+              <option value="2" >{lang xigua_integralmall:shiwu}</option>
+              <option value="1" >{lang xigua_integralmall:xuni}</option>
+          <!--{/if}-->
+          </select>
+        </span>
+      </dd>
+
+      <dt id="virtualcode_t" style="display:none;"><span class="rq">*</span><label for="virtualcode">{lang xigua_integralmall:kami}:</label></dt>
+      <dd id="virtualcode_c" style="display:none;"><span class="ftid">
+            <textarea id="virtualcode" name="virtualcode" class="pt oinf" placeholder="{lang xigua_integralmall:kamitip}" <!--{if $edit}-->readonly="readonly"<!--{/if}-->>$retcode</textarea>
+          </span>
+      </dd>
+
+      <dt><span class="rq">*</span><label for="goodname">{lang xigua_integralmall:shangpinmingcheng}:</label></dt>
+      <dd>
+        <span class="ftid"><input name="goodname" id="goodname" tabindex="2" type="text" class="px oinf" value="$idata[goodname]"  /></span>
+      </dd>
+
+
+      <dt><span class="rq">*</span><label for="marketprice">{lang xigua_integralmall:shichangjia}:</label></dt>
+      <dd>
+        <span class="ftid">
+          <input name="marketprice" id="marketprice" tabindex="2" type="text" class="px" onkeyup="checknumber(this)"  value="$idata[marketprice]" /> {lang xigua_integralmall:yuan} <span id="marketprice_message"></span>
+        </span>
+      </dd>
+
+      <dt id="goodnum_t" style="display:none;"><span class="rq">*</span><label for="goodnum">{lang xigua_integralmall:shangpinshu}:</label></dt>
+      <dd id="goodnum_c" style="display:none;"><span class="ftid">
+        <input name="goodnum" id="goodnum" tabindex="2" type="text" class="px" value="$idata[goodnum]" onkeyup="checknumber(this)" /><span id="goodnum_message"></span>
+      </span>
+      </dd>
+
+      <dt><span class="rq">*</span><label for="mallstart">{lang xigua_integralmall:jiaoyishi}:</label></dt>
+      <dd>
+        <span class="ftid">
+          <input type="text" name="mallstart" id="mallstart" tabindex="2" class="px"  autocomplete="off" value="$idata[mallstart]" <!--{if $finish}-->readonly="readonly"<!--{else}-->onclick="showcalendar(event, this, true)"<!--{/if}-->  />
+          <span> ~ </span>
+          <input type="text" autocomplete="off" id="mallend" name="mallend" tabindex="2" class="px" value="$idata[mallend]" <!--{if $finish}-->readonly="readonly"<!--{else}--> onclick="showcalendar(event, this, true)"<!--{/if}--> />
+        </span>
+      </dd>
+
+    </dl>
+  </div>
+
+  <div class="sadd z">
+    <dl>
+
+      <dt><span class="rq">*</span><label for="malltype">{lang xigua_integralmall:jiaoyilei}:</label></dt>
+      <dd>
+        <span class="ftid">
+          <select name="malltype" id="malltype" width="50" class="ps" selecti="0" style="display: none;">
+          <!--{if $edit}-->
+              <option value="$idata[malltype]">{$ini[malltypes][$idata[malltype]]}</option>
+          <!--{else}-->
+              <option value="1">{lang xigua_integralmall:yikou}</option>
+              <option value="2">{lang xigua_integralmall:choujiang}</option>
+              <option value="3">{lang xigua_integralmall:duobaodao}</option>
+              <option value="4">{lang xigua_integralmall:jingcai}</option>
+              <option value="5">{lang xigua_integralmall:renyigou}</option>
+          <!--{/if}-->
+          </select>
+        </span>
+      </dd>
+
+      <dt><span class="rq">*</span><label for="ccd">{lang xigua_integralmall:jifenleixing1}:</label></dt>
+      <dd><span class="ftid">
+        <select name="ccd" id="ccd" width="50" class="ps" style="display:none">
+          <!--{if $edit}-->
+          <option value="$idata[ccd]">{$GLOBALS['_G']['setting']['extcredits'][$idata[ccd]]['title']}</option>
+          <!--{else}-->
+          <!--{loop $GLOBALS['_G']['setting']['extcredits'] $ck $cv}-->
+            <option value="{$ck}" <!--{if $GLOBALS[setting_credit]==$ck}-->selected="selected"<!--{/if}-->>$cv[title]</option>
+          <!--{/loop}-->
+          <!--{/if}-->
+        </select></span>
+      </dd>
+
+      <dt id="sellprice_t" style="display:none;">
+        <span class="rq">*</span><label for="sellprice">{lang xigua_integralmall:chushuo}:</label>
+      </dt>
+      <dd id="sellprice_c" style="display:none;">
+        <span class="ftid">
+          <input name="sellprice" id="sellprice" tabindex="2" type="text" class="px" value="$idata[sellprice]" onkeyup="checknumber(this)" />
+           <span id="sellprice_message"></span>
+        </span>
+      </dd>
+
+      <dt id="baseprice_t" style="display:none;"><span class="rq">*</span><label for="baseprice">{lang xigua_integralmall:duobaodi}:</label></dt>
+      <dd id="baseprice_c" style="display:none;"><span class="ftid">
+        <input name="baseprice" id="baseprice" tabindex="2" type="text" class="px" onkeyup="checknumber(this)" value="$idata[baseprice]" <!--{if $edit}-->readonly="readonly"<!--{/if}--> />
+         <span id="baseprice_message"></span>
+        </span>
+      </dd>
+
+      <dt id="rangeprice_t" style="display:none;"><span class="rq">*</span><label for="rangeprice">{lang xigua_integralmall:zuidi}:</label></dt>
+      <dd id="rangeprice_c" style="display:none;"><span class="ftid">
+        <input name="rangeprice" id="rangeprice" tabindex="2" type="text" class="px" onkeyup="checknumber(this)" value="$idata[rangeprice]" />
+         <span id="rangeprice_message"></span>
+        </span>
+      </dd>
+
+      <dt id="rangemaxprice_t" style="display:none;"><span class="rq">*</span><label for="rangemaxprice">{lang xigua_integralmall:zuigao}:</label></dt>
+      <dd id="rangemaxprice_c" style="display:none;"><span class="ftid">
+        <input name="rangemaxprice" id="rangemaxprice" tabindex="2" type="text" class="px" onkeyup="checknumber(this)" value="$idata[rangemaxprice]" />
+         <span id="rangemaxprice_message"></span>
+        </span>
+      </dd>
+
+      <dt id="zuobi_t" style="display:none;"><span class="rq">*</span><label for="zuobi">{lang xigua_integralmall:zuobi}:</label></dt>
+      <dd id="zuobi_c" style="display:none;"><span class="ftid">
+        <input name="zuobi" id="zuobi" tabindex="2" type="text" class="px" value="$idata[zuobi]" /><span id="zuobi_message">{lang xigua_integralmall:gekai1}</span>
+      </span>
+      </dd>
+
+      <dt id="shuxing_t" style="display:none;"><span class="rq">*</span><label for="shuxing">{lang xigua_integralmall:shangpinshuxing}:</label></dt>
+      <dd id="shuxing_c" style="display:none;">
+        <span class="ftid_1 sinf " id="polloption_new">
+            <!--{if !$edit}-->
+            <div class="cl">
+                <input name="shuxing[]" id="shuxing" tabindex="2" type="text" class="px" value="" placeholder="{lang xigua_integralmall:shangpinshuxing}" />
+                <input name="shuxingprice[]" value="" tabindex="2"  type="number" class="px" style="width:80px" placeholder="{lang xigua_integralmall:p}" />
+                <a class="d">del</a>
+            </div>
+            <!--{else}-->
+            <!--{loop $idata[shuxing][shuxing] $kkk $vvv}-->
+                <div class="cl">
+                    <input name="shuxing[]" type="text" class="px" value="{$vvv}" placeholder="{lang xigua_integralmall:shangpinshuxing}" />
+                    <input name="shuxingprice[]" value="{$idata[shuxing][shuxingprice][$kkk]}" type="number" class="px" style="width:80px" placeholder="{lang xigua_integralmall:p}" />
+                    <a class="d" <!--{if $kkk!=0}--> onclick="delshuxing(this)"<!--{/if}-->>del</a>
+                </div>
+            <!--{/loop}-->
+            <!--{/if}-->
+        </span>
+
+        <a id="shuxing_message" style="cursor:pointer;display:block;margin-top:5px;clear:both!important;" class="xi2 cl" onclick="addshuxing();">{lang xigua_integralmall:a1}</a>
+      </dd>
+
+        <dt>
+            <span class="rq">*</span><label>{lang xigua_integralmall:feng}:</label></dt>
+        </dt>
+        <dd>
+            <p><button type="button" class="pn" onclick="integralmall_doupload();">
+                <span><!--{if $oldattach[attachment]}-->{lang update}<!--{else}-->{lang upload}<!--{/if}--></span>
+            </button></p>
+            <input type="hidden" name="integralmall_aid" id="integralmall_aid" />
+            <input type="hidden" name="integralmall_url" id="integralmall_url" />
+            <div id="integralmall_image">
+                <!--{if $oldattach['attachment']}-->
+                <span class="xg1">{lang xigua_integralmall:gengxinf}</span>
+                <a href="javascript:void(0);" target="_blank"><img class="spimg" src="$oldattach[attachment]" alt="" /></a>
+                <!--{else}-->
+                <span class="xg1">{lang xigua_integralmall:shangchuanba}</span>
+                <!--{/if}-->
+            </div>
+        </dd>
+
+    </dl>
+  </div>
+</div>
+<script reload="1">
+function addshuxing() {
+    var div = document.createElement('div');
+    div.className = 'cl';
+    div.innerHTML = '<input name="shuxing[]" tabindex="2"  type="text" class="px" placeholder="{lang xigua_integralmall:shangpinshuxing}" />\
+            <input name="shuxingprice[]" tabindex="2"  type="number" class="px" style="width:80px" placeholder="{lang xigua_integralmall:p}" />\
+            <a class="d" onclick="delshuxing(this)">del</a>';
+    $('polloption_new').appendChild(div);
+}
+function delshuxing(obj){
+    obj.parentNode.parentNode.removeChild(obj.parentNode);
+}
+
+var goodname = $('goodname'), mallstart = $('mallstart'), mallend = $('mallend'), goodkind = $('goodkind'), malltype = $('malltype'), virtualcode = $('virtualcode'), goodnum = $('goodnum'), rangeprice = $('rangeprice'),rangemaxprice =$('rangemaxprice'), baseprice = $('baseprice'), marketprice = $('marketprice'), sellprice = $('sellprice');
+
+simulateSelect('malltype');
+simulateSelect('goodkind');
+simulateSelect('ccd');
+
+function checknumber(obj){
+  obj.value = obj.value.replace(/[^\d]/g,'');
+  var value = obj.value;
+  var showid = $(obj.id +'_message');
+  if(!value.search(/^\d+$/)) {
+    showid.innerHTML = '';
+  } else {
+    if(value && value<0){
+      showid.innerHTML = '{lang xigua_integralmall:notl0}';
+    }else{
+      showid.innerHTML = '{lang xigua_integralmall:chun}';
+    }
+  }
+}
+function checknumber_bool(value){
+  value = parseInt(value);
+  return !value.search(/^\d+$/) && value && value >=0;
+}
+
+setInterval(function() {
+    var v = 2, t = 1, show = [];
+    v = $('goodkind').value;
+    t = $('malltype').value;
+    var options = ['virtualcode','sellprice','baseprice','rangeprice','rangemaxprice','goodnum', 'zuobi', 'shuxing'];
+
+    if(v == 2){
+        if( t == 3) {
+            show = ['baseprice','goodnum','rangeprice','rangemaxprice'];
+        }else if(t ==2){
+          show = ['sellprice','goodnum','zuobi'];
+        }else if(t ==5){
+          show = ['goodnum','shuxing'];
+        }else{
+            show = ['sellprice','goodnum'];
+        }
+    }else if(v ==1){
+        if(t == 3) {
+            show = ['virtualcode','baseprice','rangeprice', 'rangemaxprice'];
+        }else if(t ==2){
+            show = ['virtualcode','sellprice','zuobi'];
+        }else if(t ==5){
+            show = ['virtualcode', 'goodnum','shuxing'];
+        }else{
+            show = ['virtualcode','sellprice'];
+        }
+    }
+    for(var i=0;i<options.length;i++) {
+        if(in_array(options[i], show)) {
+            $(options[i]+'_t').style.display = 'block';
+            $(options[i]+'_c').style.display = 'block';
+        } else {
+            $(options[i]+'_t').style.display = 'none';
+            $(options[i]+'_c').style.display = 'none';
+        }
+    }
+}, 40);
+
+EXTRAFUNC['validator']['special'] = 'validatormall';
+function validatormall() {
+    goodkind = $('goodkind');
+    malltype = $('malltype');
+    if(goodname.value == '') {
+      showDialog('{lang xigua_integralmall:t1}', 'alert', '', function () { goodname.focus(); });
+      return false;
+    }
+    if(marketprice.value == '') {
+      showDialog('{lang xigua_integralmall:t2}', 'alert', '', function () { marketprice.focus() });
+      return false;
+    }
+
+    if(goodkind.value == 1) {
+      if(virtualcode.value == '') {
+        showDialog('{lang xigua_integralmall:t3}', 'alert', '', function () { virtualcode.focus() });
+        return false;
+      }
+    }else{
+      if(!checknumber_bool(goodnum.value)) {
+        showDialog('{lang xigua_integralmall:t4}', 'alert', '', function () { goodnum.focus() });
+        return false;
+      }
+    }
+    if(mallstart.value == '') {
+        showDialog('{lang xigua_integralmall:t5}', 'alert', '', function () { mallstart.focus() });
+        return false;
+    }
+    if(mallend.value == '') {
+        showDialog('{lang xigua_integralmall:t6}', 'alert', '', function () { mallend.focus() });
+        return false;
+    }
+
+    if(malltype.value == 3) {  //base-range
+        var rangepriceval = parseInt(rangeprice.value);
+        var rangemaxpriceval = parseInt(rangemaxprice.value);
+
+        if(!checknumber_bool(baseprice.value)) {
+          showDialog('{lang xigua_integralmall:t7}', 'alert', '', function () { baseprice.focus() });
+          return false;
+        }
+        if(!checknumber_bool(rangepriceval)) {
+          showDialog('{lang xigua_integralmall:t8}', 'alert', '', function () { rangeprice.focus() });
+          return false;
+        }
+        if(!checknumber_bool(rangemaxpriceval) || (rangemaxpriceval && rangemaxpriceval <rangepriceval)) {
+          showDialog('{lang xigua_integralmall:t9}', 'alert', '', function () { rangemaxprice.focus() });
+          return false;
+        }
+    }else{
+        if(!checknumber_bool(sellprice.value)) {
+          showDialog('{lang xigua_integralmall:t10}', 'alert', '', function () { sellprice.focus() });
+          return false;
+        }
+    }
+    return true;
+}
+function integralmall_doupload(){
+    uploadWindow(function (aid, url){
+      $('integralmall_url').value = url;
+      $('integralmall_aid').value = aid;
+      $('integralmall_image').innerHTML = '<img src="{$_G[setting][attachurl]}forum/' + url + '" class="imgpreview" />';
+      ATTACHORIMAGE = 1;
+    });
+}
+</script>
+<!--{/block}-->

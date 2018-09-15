@@ -1,0 +1,136 @@
+
+<!--{eval $backlist = 1;}-->
+<!--{eval $navtitle = '';}-->
+<!--{template common/header}-->
+
+
+<style>
+    .topavatar{
+        position: relative;
+        overflow: hidden;
+        background:#F6584F;
+        background-size:cover;
+        text-align:center;
+        padding-top:50px;
+        height:150px;
+    }
+    .avatarimg{
+        width:66px;
+        height:66px;
+        margin:0 auto;
+        border-radius:50%;
+        background:rgba(255, 255, 255, .5);
+        margin-bottom:5px;
+    }
+    .avatarimg img{
+        border-radius:50%;
+        display:inline-block;
+        width:60px;
+        height:60px;
+        margin:3px;
+    }
+    .username{
+        color:#FFF;
+        /*text-shadow:1px 1px 1px #CCC;*/
+        font-size:16px;
+        line-height:22px;
+    }
+    .username img{
+        width:15px;
+        height:15px;
+        vertical-align:middle;
+    }
+    .pn_grey{width:45%; height: 30px; padding: 0 10px; border:1px solid #ddd;}
+    .bl_line{ padding-bottom: 10px; margin: 10px 0; border-bottom: 1px solid #eee;}
+    .bl_none{margin-bottom: 10px;}
+</style>
+
+<body class="bg">
+<div class="topavatar">
+        <div class="pa">
+            <div class="avatarimg">
+                <a href="home.php?mod=space&uid={$_G[uid]}&do=profile&mycenter=1"><img src="{avatar($_G[uid], 'middle', 1)}"></a>
+            </div>
+            <span class="username">{$_G[username]}</span>
+        </div>
+    </div>
+
+
+<!--{if $op != ''}-->
+<div class="bm_c"><a href="home.php?mod=spacecp&ac=phone&mobile=2"><b>{lang smstong:smstong_mobilebind_mobile_bind}</b></a></div>
+<!--{else}-->
+
+<form id="pmform_{$pmid}" name="pmform_{$pmid}" method="post" autocomplete="off" action="home.php?mod=spacecp&ac=phone&op=bind&mobile=2" >
+	<input type="hidden" name="referer" value="{echo dreferer();}" />
+	<input type="hidden" name="submit" value="true" />
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+
+<!-- main post_msg_box start -->
+<div class="wp">
+	<div class="post_msg_from" style="padding:0 30px;">
+		<ul>
+			<li class="bl_line">
+				<label for="mobile"><strong>{lang smstong:smstong_mobilereg_mobile}</strong></label>
+				<input type="text" id="phone" name="phone" value="$phone" maxlength="11" class="pn_grey" />
+
+				<input type="button" name="send_btn" id="send_btn" class="btn_pn btn_pn_grey button" value="{lang send}" onclick="getbindverifycode();" style="padding: 2px 10px; border:1px solid #ddd"/>
+			</li>
+			
+			<li class="bl_none area">
+				<label for="verifycode"><strong>{lang smstong:smstong_mobilebind_verifycode}</strong></label>
+				<input type="text" id="verifycode" name="verifycode" value="" maxlength="6" class="pn_grey" />
+			</li>
+			<li class="bl_none area">
+				<input type="submit" name="bind_btn" id="bind_btn" value="{lang smstong:smstong_mobilebind_submit}" class="btn_pn btn_pn_grey" style="position: relative; display: block; margin-left: auto; margin-right: auto; padding-left: 14px; padding-right: 14px; box-sizing: border-box; font-size: 18px; text-align: center; text-decoration: none; color: #FFF; line-height: 2.55555556; border-radius: 5px; -webkit-tap-highlight-color: transparent; overflow: hidden; background-color:#f60; width: 100%;border-width: 0;"/>
+			</li>
+		</ul>
+		
+	</div>
+</div>
+<!-- main postbox start -->
+</form>
+<script src="static/js/common.js" type="text/javascript" type="text/javascript"></script>
+<script type="text/javascript">
+	var xmlHttp = false;
+
+	if(window.XMLHttpRequest) {
+		xmlHttp = new XMLHttpRequest();
+	} else if(window.ActiveXObject) {
+		var versions = ['Microsoft.XMLHTTP', 'MSXML.XMLHTTP', 'Microsoft.XMLHTTP', 'Msxml2.XMLHTTP.7.0', 'Msxml2.XMLHTTP.6.0', 'Msxml2.XMLHTTP.5.0', 'Msxml2.XMLHTTP.4.0', 'MSXML2.XMLHTTP.3.0', 'MSXML2.XMLHTTP'];
+		for(var i=0; i<versions.length; i++) {
+			try {
+				xmlHttp = new ActiveXObject(versions[i]);
+			} catch(e) {}
+		}
+	}
+
+	function getbindverifycode() {
+		var phone = trim($('phone').value);
+		if(phone == '') {
+			$('phone').focus();
+			alert('{lang smstong:smstong_mobilereg_mobile_empty}');
+		} else {
+
+			var url = 'home.php?mod=spacecp&ac=phone&op=send&inajax=yes&inmobile=yes&phone=' + phone + '&' + Math.random();
+
+			xmlHttp.open("GET", url);
+			xmlHttp.onreadystatechange = getbindverifycodecallback
+			xmlHttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+			xmlHttp.send(null);
+		}
+	}
+
+	function getbindverifycodecallback() {
+		if(xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			if (xmlHttp.responseText.indexOf('{lang smstong:smstong_mobilereg_sendsms_succeed}') != -1) {
+				alert('{lang smstong:smstong_mobilebind_sendsms_succeed}');
+			} else {
+				alert(xmlHttp.responseText);
+			}
+		}
+	};
+
+</script>
+<!--{/if}-->
+<!--{eval $nofooter = true;}-->
+<!--{template common/footer}-->

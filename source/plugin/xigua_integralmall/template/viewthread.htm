@@ -1,0 +1,197 @@
+<!--{block return}-->
+<link href="source/plugin/xigua_integralmall/static/basepc.css?_=20150906" rel="stylesheet" />
+<link href="source/plugin/xigua_integralmall/static/flexslider.css?_=20150906" rel="stylesheet" />
+<!--{if $idata[malltype]==5}-->
+<style>
+
+  .iinfo th, .iinfo td{vertical-align:top}
+  .iinfo{height:auto!important;min-height:280px!important;}
+  .iinfo .bottombtn{position:relative!important;margin-left:-20px}
+  .iinfo .bottombtn a:first-child{width:100px;margin-top:10px}
+  .iinfo .bottombtn a{margin-left:10px}
+  .taglist12 a{cursor:pointer;
+    padding:4px 9px;
+    vertical-align: middle;
+    border: 1px solid #d1d1d1;background:#fff;
+    float:left;margin:5px 5px 0 0;
+    -webkit-transition:none!important;
+    transition:none!important;
+    font-size:12px!important;    white-space: nowrap;
+  }
+  .taglist12{margin:0 0 20px}
+  .taglist12 a:hover{
+border:2px solid #be0106;
+    margin:4px 4px -1px -1px;
+    text-decoration:none;
+  }
+  .taglist12 a.selected{
+    background:#fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAxMS8wNS8xNSqv2bYAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAAW0lEQVQokZXPMRLAIAgAwSOV+ZO/N3+yJBUZgpqgjYV7jMDGaRSVHQyQCgynAo9/g4g/gxkGOLK4ap8HjaL2GPEQ+MmG7L7kBNwO8Rt+quEnWC1Ytb8wgKzw6twMfSdPrt7/oQAAAABJRU5ErkJggg==) no-repeat right bottom;
+    border:2px solid #be0106;
+    margin:4px 4px -1px -1px;
+    text-decoration:none;
+  }
+</style>
+<script>
+  var shutype = 0;
+  function select12(obj, kkk){
+    var p = obj.parentNode.childNodes;
+    for(var i =0; i< p.length; i++){
+      if(p[i].nodeType==1 && p[i].tagName) {
+        p[i].className = '';
+      }
+    }
+    $('ired').innerHTML = obj.getAttribute('data-price');
+    obj.className = 'selected';
+    shutype = kkk;
+  }
+</script>
+<!--{/if}-->
+<script src="source/plugin/xigua_integralmall/static/jquery-1.11.1.min.js?_=20150906"></script>
+<script src="source/plugin/xigua_integralmall/static/jquery.flexslider-min.js?_=20150906"></script>
+<script>
+jQuery.noConflict();
+jQuery(window).load(function(){
+  jQuery('.flexslider1').flexslider({
+    animation: "slide",
+    prevText:'',
+    nextText:'',
+    slideshow:true,
+    slideshowSpeed:3000
+  });
+});
+</script>
+<div class="cl wrapper123">
+  <div class="iimage">
+    <!--{if $idata[attachment]}-->
+    <div class="flexslider1">
+      <ul class="slides">
+        {loop $idata[attachment] $kk $vv}
+        <li><img src="{$vv}" <!--{if $_G[uid] && $idata[encodeaid][$kk]}-->zoomfile="forum.php?mod=attachment&aid={$idata[encodeaid][$kk]}&nothumb=yes" onclick="zoom(this, this.getAttribute('zoomfile'))"<!--{/if}-->/></li>
+        {/loop}
+      </ul>
+    </div>
+    <!--{else}-->
+    <img src="source/plugin/xigua_integralmall/static/images/nophoto1.png" width="400">
+    <!--{/if}-->
+  </div>
+  <div class="iinfo">
+    <p class="ititle">{$idata[goodname]}</p>
+    <div class="intro">
+      <table>
+        <tr>
+          <th>{lang xigua_integralmall:weiguan}</th>
+          <td>{$idata[hot]}{lang xigua_integralmall:ci}</td>
+        </tr>
+        <tr>
+          <th>{lang xigua_integralmall:shichangjia}</th>
+          <td><del>{lang xigua_integralmall:y}{$idata[marketprice]}{lang xigua_integralmall:yuan}</del></td>
+        </tr>
+        <tr>
+          <th>$current_price_title</th>
+          <td><span class="ired" id="ired">$current_price</span>{$GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['unit']}{$GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['title']}</td>
+        </tr>
+        <tr>
+          <th>{lang xigua_integralmall:shangpinshu}</th>
+          <td>{lang xigua_integralmall:sheng} <span class="ired2">{$idata[leavenum]}</span> {lang xigua_integralmall:jian} {if $idata[lognum]}/ {lang xigua_integralmall:yishou} <span class="xi1">$idata[lognum]</span> {lang xigua_integralmall:jian}{/if}</td>
+        </tr>
+        <tr>
+          <th id="timer_th">{if $finish}{lang xigua_integralmall:jieshushijian}{else}{lang xigua_integralmall:shengyu}{/if}</th>
+          <td>
+            <div class="timer" id="timer"></div>
+            <div class="timer-process"><span id="timer-width"></span></div>
+          </td>
+        </tr>
+        <!--{if $idata[malltype]==5}-->
+        <tr>
+          <th>{lang xigua_integralmall:shangpinshuxing}</th>
+          <td>
+            <div class="cl taglist12">
+              <!--{loop $idata[shuxing][shuxing] $kkk $vvv}-->
+              <a data-price="{$idata[shuxing][shuxingprice][$kkk]}" onclick="select12(this, '{$kkk}')" <!--{if $kkk ==0}-->class="selected"<!--{/if}-->>{$vvv}</a>
+              <!--{/loop}-->
+            </div>
+          </td>
+        </tr>
+        <!--{/if}-->
+
+      </table>
+    </div>
+
+    <div class="bottombtn cl">
+      <!--{if !$finish && !$notstart && $idata[leavenum]>0}-->
+      <!--{if $idata[malltype]==5}-->
+      <a href="javascript:void(0);" onclick="showWindow('confirm', 'plugin.php?id=xigua_integralmall&operation=$joinaction&shuxing='+shutype+'&tid=$tid', 'get', 0,{cover:1});doane(event);" class="btn11 btn-outline">$btn_title</a>
+      <!--{else}-->
+      <a href="javascript:void(0);" onclick="showWindow('confirm', 'plugin.php?id=xigua_integralmall&operation=$joinaction&tid=$tid', 'get', 0,{cover:1});doane(event);" class="btn11 btn-outline">$btn_title</a>
+      <!--{/if}-->
+      <!--{elseif $notstart}-->
+      <a href="javascript:void(0);" class="btn11 btn-offline">{lang xigua_integralmall:weikaishi}</a>
+      <!--{else}-->
+      <a href="javascript:void(0);" class="btn11 btn-offline">{lang xigua_integralmall:yijieshu}</a>
+      <!--{/if}-->
+      <!--{if $showcodeinfo}-->
+      <a href="javascript:void(0);" onclick="showWindow('view_message', 'plugin.php?id=xigua_integralmall&operation=view_message&tid=$tid', 'get', 0);doane(event);" >{lang xigua_integralmall:chakankami}</a>
+      <!--{elseif $codeinfo}-->
+      <a href="javascript:void(0);" onclick="showDialog('$mycodeinfo', 'info', '{lang xigua_integralmall:chakankami}');doane(event);">{lang xigua_integralmall:chakankami}</a>
+      <!--{/if}-->
+      <!--{if $showgoodinfo}-->
+      <a href="javascript:void(0);" onclick="showWindow('view_message', 'plugin.php?id=xigua_integralmall&operation=view_message&tid=$tid', 'get', 0);doane(event);" >{lang xigua_integralmall:fahuojilu}</a>
+      <!--{/if}-->
+      <!--{if $showmygoodinfo}-->
+      <a href="javascript:void(0);" onclick="showWindow('iextraform', 'plugin.php?id=xigua_integralmall&operation=viewprofile&tid=$tid&reciver_uid=$_G[uid]', 'get', 0);doane(event);" >{lang xigua_integralmall:fahuojilu}</a>
+      <!--{/if}-->
+      <!--{if $showmyprofile}-->
+      <a href="javascript:void(0);" onclick="showWindow('myprofile', 'plugin.php?id=xigua_integralmall&operation=myprofile&tid=$tid', 'get', 0);doane(event);" >{lang xigua_integralmall:shouhuo}</a>
+      <!--{/if}-->
+    </div>
+  </div>
+</div>
+<div class="cl mtp20" id="ilistinfo"></div>
+<script>
+var endtime= new Date('{$idata[mallend_string]}');
+var starttime= new Date('{$idata[mallstart_string]}');
+var keeptime = endtime - starttime;
+var itimer = document.getElementById("timer");
+var itimerwidth = document.getElementById("timer-width");
+var handler = '';
+function GetRTime(){
+  var nowtime = new Date();
+  var t = endtime.getTime() - nowtime.getTime();
+  if(t<0){
+    clearInterval(handler);
+    itimer.innerHTML = '{$idata[mallend_string]}';
+    itimerwidth.style.width = '0%';
+    $('timer_th').innerHTML = '{lang xigua_integralmall:jieshushijian}';
+    return;
+  }
+  var dd = t/1000;
+
+  var d=Math.floor(dd/3600/24);
+  var h=Math.floor(dd/3600%24);
+  var m=Math.floor(dd/60%60);
+  var s=Math.floor(dd%60);
+  var o=Math.floor(t/10%100);
+  var width = t/keeptime*100;
+
+  var ddis = '', hdis = '', mdis = '', sdis = '';
+
+  if(h<10){h = '0'+h;}
+  if(m<10){m = '0'+m;}
+  if(s<10){s = '0'+s;}
+  if(o<10){o = '0'+o;}
+  if(d){
+    ddis = '<strong>'+d+'</strong>' + "{lang xigua_integralmall:day}";
+  }
+  hdis = '<strong>'+h+'</strong>' + "{lang xigua_integralmall:h}";
+  mdis = '<strong>'+m+'</strong>' + "{lang xigua_integralmall:m}";
+  sdis = '<strong>'+s+'</strong>' + "{lang xigua_integralmall:s}";
+  itimer.innerHTML = ddis + hdis + mdis + sdis + ('<strong>'+o+'</strong>');
+  itimerwidth.style.width = width+'%';
+}
+handler = setInterval(GetRTime, 10);
+
+if($('ilistinfo')){
+  ajaxget('plugin.php?id=xigua_integralmall&operation=view&tid=$tid&page=1', 'ilistinfo');
+}
+</script>
+<!--{/block}-->

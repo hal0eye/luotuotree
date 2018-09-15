@@ -1,0 +1,67 @@
+
+<div class="weui-panel weui-panel_access">
+    <!--{if $tasklist}-->
+
+
+    <!--{loop $tasklist $task}-->
+
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__hd">
+                    <img class="weui-media-box__thumb" src="$task[icon]"  alt="$task[name]">
+                </div>
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title"><a href="home.php?mod=task&do=view&id=$task[taskid]">$task[name]</a> <span class="xs1 xg2 xw0">({lang task_applies}: <a href="home.php?mod=task&do=view&id=$task[taskid]#parter">$task[applicants]</a> )</span></h4>
+                    <div class="weui-media-box__desc">$task[description]
+                        <!--{if $_GET['item'] == 'doing'}-->
+                        <div class="pbg mtm mbm">
+                            <div class="pbr" style="width: {if $task[csc]}$task[csc]%{else}8px{/if};"></div>
+                            <div class="xs0">{lang task_complete} <span id="csc_$task[taskid]">$task[csc]</span>%</div>
+                        </div>
+                        <!--{/if}-->
+                    </div>
+                    <div class="weui-media-box__desc">
+                        <!--{if $task['reward'] == 'credit'}-->
+                        {lang credits} $_G['setting']['extcredits'][$task[prize]][title] $task[bonus] $_G['setting']['extcredits'][$task[prize]][unit]
+                        <!--{elseif $task['reward'] == 'magic'}-->
+                        {lang magics_title} $listdata[$task[prize]] $task[bonus] {lang magics_unit}
+                        <!--{elseif $task['reward'] == 'medal'}-->
+                        {lang medals} $listdata[$task[prize]] <!--{if $task['bonus']}-->{lang expire} $task[bonus] {lang days} <!--{/if}-->
+                        <!--{elseif $task['reward'] == 'invite'}-->
+                        {lang invite_code} $task[prize] {lang expire} $task[bonus] {lang days}
+                        <!--{elseif $task['reward'] == 'group'}-->
+                        {lang usergroup} $listdata[$task[prize]] <!--{if $task['bonus']}--> $task[bonus] {lang days} <!--{/if}-->
+                        <!--{/if}-->
+
+                    </div>
+                    <div class="weui-media-box__desc">
+                        <!--{if $_GET['item'] == 'new'}-->
+                        <!--{if $task['noperm']}-->
+                        <a href="javascript:;" onclick="alert('{lang task_group_nopermission}')"><img src="{STATICURL}image/task/disallow.gif" title="{lang task_group_nopermission}" alt="disallow" /></a>
+                        <!--{elseif $task['appliesfull']}-->
+                        <a href="javascript:;" onclick="alert('{lang task_applies_full}')"><img src="{STATICURL}image/task/disallow.gif" title="{lang task_applies_full}" alt="disallow" /></a>
+                        <!--{else}-->
+                        <a href="home.php?mod=task&do=apply&id=$task[taskid]"><img src="{STATICURL}image/task/apply.gif" alt="apply" /></a>
+                        <!--{/if}-->
+                        <!--{elseif $_GET['item'] == 'doing'}-->
+                        <p><a href="home.php?mod=task&do=draw&id=$task[taskid]"><img src="{STATICURL}image/task/{if $task[csc] >=100}reward.gif{else}rewardless.gif{/if}"  alt="" /></a></p>
+                        <!--{elseif $_GET['item'] == 'done'}-->
+                        <p style="white-space:nowrap">{lang task_complete_on} $task[dateline]
+                            <!--{if $task['period'] && $task[t]}--><br /><!--{if $task[allowapply]}--><a href="home.php?mod=task&do=apply&id=$task[taskid]">{lang task_applyagain_now}</a><!--{else}-->{$task[t]}{lang task_applyagain}<!--{/if}--><!--{/if}--></p>
+                        <!--{elseif $_GET['item'] == 'failed'}-->
+                        <p style="white-space:nowrap">{lang task_lose_on} $task[dateline]
+                            <!--{if $task['period'] && $task[t]}--><br /><!--{if $task[allowapply]}--><a href="home.php?mod=task&do=apply&id=$task[taskid]">{lang task_applyagain_now}</a><!--{else}-->{$task[t]}{lang task_reapply}<!--{/if}--><!--{/if}--></p>
+                        <!--{/if}-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <!--{/loop}-->
+    <!--{else}-->
+    <div class="weui-cells__title"><!--{if $_GET['item'] == 'new'}-->{lang task_nonew}<!--{elseif $_GET['item'] == 'doing'}-->{lang task_nodoing}<!--{else}-->{lang data_nonexistence}<!--{/if}--></div>
+    <!--{/if}-->
+</div>

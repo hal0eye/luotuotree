@@ -1,0 +1,61 @@
+﻿<!--{template common/header}-->
+<style id="diy_style" type="text/css"></style>
+<div class="wp cl">
+	<div class="portal_slide"><!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]--></div>
+	<div class="portal_ad mtm mbm"><!--[diy=diy2]--><div id="diy2" class="area"></div><!--[/diy]--></div>
+	<div class="col1 z">
+		<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+		<div class="jquery_pagnation"></div>
+		<script type="text/javascript" src="template/xinrui_vmall/js/jquery.pagnation.js"></script> 
+		<script type="text/javascript">
+			(function(dfsj_jq){
+			var dfsj_items = dfsj_jq('.newest li');
+			var dfsj_items2 = 10;
+			var total = dfsj_items.size();
+			total>0 && dfsj_jq('.jquery_pagnation').pagination({pagetotal:total,target:dfsj_items,perpage:dfsj_items2});
+			})(jQuery);
+		</script>
+	</div>
+	<div class="col2 y">
+		<div class="sd_btn sd_box">
+			<a onclick="showWindow('nav', this.href, 'get', 0)" href="forum.php?mod=misc&amp;action=nav" class="post_btn">发表新帖</a>
+			<a href="plugin.php?id=dsu_paulsign:sign" class="signin">新手必读</a>
+		</div>
+		<div class="colu sd_box">
+			<!--[diy=diy4]--><div id="diy4" class="area"></div><!--[/diy]-->
+		</div>
+		<div class="photo sd_box">
+			<!--[diy=diy5]--><div id="diy5" class="area"></div><!--[/diy]-->
+		</div>
+		<div class="expert sd_box">
+			<!--[diy=diy7]--><div id="diy7" class="area"></div><!--[/diy]-->
+		</div>
+		<div class="hot_post black sd_box">
+			<!--[diy=diy8]--><div id="diy8" class="area"></div><!--[/diy]-->
+		</div>
+                <div class="sd_box">
+			<!--[diy=diy8-9]--><div id="diy11" class="area"></div><!--[/diy]-->
+		</div>
+		<div class="sd_box">
+			<!--[diy=diy9]--><div id="diy9" class="area"></div><!--[/diy]-->
+		</div>
+		<div class="sd_box">
+			<!--[diy=diy10]--><div id="diy10" class="area"></div><!--[/diy]-->
+		</div>
+		
+	</div>
+</div>
+<div class="xr_lk mtw">
+	<!--[diy=diy13]--><div id="diy13" class="area"></div><!--[/diy]-->
+</div>
+<script src="misc.php?mod=diyhelp&action=get&type=index&diy=yes&r={echo random(4)}" type="text/javascript"></script>
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=tools&mini=1" ></script> 
+<script type="text/javascript" id="bdshell_js"></script> 
+<script type="text/javascript">
+var bds_config = {};
+document.getElementById('bdshell_js').src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script>
+<!-- Baidu Button END -->
+<!--{template common/footer}-->
+

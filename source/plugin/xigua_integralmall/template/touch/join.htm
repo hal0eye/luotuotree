@@ -1,0 +1,51 @@
+<!--{template common/header}-->
+<style>
+
+</style>
+<form {$formfix} action="plugin.php?id=xigua_integralmall&operation=join&tid={$tid}<!--{if $idata[malltype]==5}-->&shuxing=$_GET[shuxing]<!--{/if}-->" method="post" id="mobilejoin">
+    <input type="hidden" name="formhash" value="{FORMHASH}">
+    <div class="iduobao">
+        <div class="pdiv cl">
+            <div class="iduobaoinfo">
+                {lang xigua_integralmall:haiyou} <strong class="ired1">$mycredict</strong> $GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['title']
+                <!--{if $idata[malltype] != 4 }--><br>{$titles[$idata[malltype]]}{lang xigua_integralmall:chenggong}<strong class="ired1">$current_price</strong> $GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['title']
+                <!--{else}--><br>{lang xigua_integralmall:caizhong}{$GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['title']}{lang xigua_integralmall:jike}<!--{/if}-->
+            </div>
+            <!--{if $idata[malltype] == 4 }-->
+            <div class="por">
+                <a class="decrement" href="javascript:void(0);" ontouchstart="return idecre();">-</a>
+                <input autocomplete="off" class="itextarea" id="itxt" type="text" name="myprice" value="" onkeyup="renum(this, 2000);" placeholder="{lang xigua_integralmall:caicai}">
+                <a class="increment" href="javascript:void(0);" ontouchstart="return iincre();">+</a>
+            </div>
+            <!--{/if}-->
+            <!--{if $config[autoreply]}-->
+            <!--{eval $auto = str_replace(array('price','name'), array($current_price.$GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['title'], $idata[goodname]), $autos[$idata[malltype]]);}-->
+            <textarea name="replyinfo" class="itextarea" rows="3">{$auto}</textarea>
+            <!--{/if}-->
+        </div>
+
+        <p class="o pns cl">
+            <button id="dosubmit" class="btn btn-outline" type="button" ontouchstart="return mobilesubmit();" >{lang xigua_integralmall:queding}</button>
+            <a class="btn btn-offline" href="javascript:void(0);" ontouchstart="hideWindow('confirm');return false;">{lang close}</a>
+        </p>
+        <input name="dosubmit" value="1" type="hidden">
+    </div>
+    <div id="rresult"></div>
+</form>
+<script>
+var min = 1;
+var max = $mycredict;
+function mobilesubmit(){
+    xgajaxpost('mobilejoin', '', '', '', 'dosubmit', function(ret){
+        if(ret.indexOf('succeedhandle_') !== -1){
+            alert(anchorSucceed(ret));
+            window.location.reload();
+        }else{
+            alert(anchorError(ret));
+        }
+    });
+    return false;
+}
+</script>
+<script src="source/plugin/xigua_integralmall/static/join.js"></script>
+<!--{template common/footer}-->

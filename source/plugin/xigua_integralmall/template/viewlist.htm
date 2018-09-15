@@ -1,0 +1,19 @@
+<!--{template common/header}-->
+<table class="table">
+  <thead>
+  <tr><th colspan="4" style="position:relative">{$titles[$idata[malltype]]}{lang xigua_integralmall:jilu}<strong class="ired1">{$idata[give]}</strong>{lang xigua_integralmall:ci}{$titles[$idata[malltype]]})
+    <a href="$config[ruleid]" target="_blank" class="icons iconsnone righttop"></a></th></tr>
+  </thead>
+  <tbody>
+  <!--{loop $ilist $k $vv}-->
+  <tr <!--{if ($k+1) %2==0}-->class="odd"<!--{/if}-->>
+    <td>{$vv[dateline]}</td>
+    <td>{$vv[username]}</td>
+    <td><strong class="ired2">{$vv[currentprice]}</strong>{$GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['unit']}{$GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['title']}</td>
+    <td>{$vv[status]}</td>
+  </tr>
+  <!--{/loop}-->
+  </tbody>
+</table>
+<!--{if $multi}--><div>$multi</div><!--{/if}-->
+<!--{template common/footer}-->

@@ -1,0 +1,36 @@
+<!--{template common/header}-->
+<h3 class="flb"><em>{if $canadmin}{lang xigua_integralmall:queren}{else}{lang xigua_integralmall:fahuojilu}{/if}</em>
+  <!--{if $_G['inajax']}--><span><a href="javascript:void(0);" class="flbc" onclick="hideWindow('iextraform')" title="{lang close}">{lang close}</a></span><!--{/if}-->
+</h3>
+<div style="padding: 0 10px 0 0;width:390px;max-height:380px;*height:380px;overflow-y:auto;">
+  <style>.alert_info{padding-left:0;background:none!important;}</style>
+  <form method="post" action="plugin.php?id=xigua_integralmall&operation=viewprofile&reciver_uid=$ruid&tid={$tid}" id="iextraform" onsubmit="return false;">
+    <input name="formhash" type="hidden" value="{FORMHASH}" />
+    <table class="table">
+      <tbody>
+        $pfary
+        <tr><td class="iinfoth">{lang xigua_integralmall:danhao}</td><td>
+          {if $canadmin}<input type="text" class="px w100" name="kuaidi" value="{$kuaidi}" placeholder="{lang xigua_integralmall:qingkuaidi}">{else}$kuaidi{/if}
+        </td></tr>
+        <tr><td class="iinfoth">{lang xigua_integralmall:beizhu}</td><td>{if $canadmin}<input type="text" class="px w100" name="beizhu" value="{$beizhu}" placeholder="{lang xigua_integralmall:ruwuliu}">{else}$beizhu{/if}</td></tr>
+        <!--{if $crts}--><tr><td class="iinfoth">{lang xigua_integralmall:fahuoshijian}</td><td>$crts</td></tr><!--{/if}-->
+        {if $canadmin}<tr>
+        <td class="iinfoth">&nbsp;</td>
+        <td>
+          <input id="dosubmit1" type="submit" class="btn11 btn-orange" name="dosubmit" onclick="return dosave1();" value="{lang xigua_integralmall:queding}" />
+          <div id="iextraback"></div>
+        </td>
+      </tr>{/if}
+      </tbody>
+    </table>
+  </form>
+</div>
+<script>
+  function dosave1(){
+    ajaxpost('iextraform', 'iextraback', '', '', 'dosubmit1', function(){
+//      hideWindow('iextraform');
+    });
+    return false;
+  }
+</script>
+<!--{template common/footer}-->

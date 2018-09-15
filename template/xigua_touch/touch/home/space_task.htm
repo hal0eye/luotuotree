@@ -1,0 +1,59 @@
+<!--{template common/header}-->
+<!--{eval $back=$_SERVER['HTTP_REFERER']?'javascript:history.back(-1)':'forum.php';}-->
+<script language="javascript">
+	$(document).on('click', '.taskdialog', function() {
+		var obj = $(this);
+		popup.open('<img src="' + IMGDIR + '/imageloading.gif">');
+		$.ajax({
+			type : 'GET',
+			url : obj.attr('href') + '&inajax=1&check=1',
+			dataType : 'xml'
+		})
+		.success(function(s) {
+			if(s.lastChild.firstChild.nodeValue!='ok'){
+				if(obj.attr('href').indexOf('draw')>0){
+					var arr=s.lastChild.firstChild.nodeValue.split('|');
+                    var returnlang=arr[1];
+					popup.open('<div class="tip"><form><p class="tip_msg">'+returnlang+'</p><p class="tip_btn"><button type="button" class="reset button" onclick="popup.close();">{lang close}</button></p></form></div>');
+				}else{
+					popup.open(s.lastChild.firstChild.nodeValue);
+				}
+				evalscript(s.lastChild.firstChild.nodeValue);
+			}else{
+			 if(obj.attr('href').indexOf('apply')>0){
+				 $('#'+obj.attr('id')).removeClass('b_w taskdialog');
+				 $('#'+obj.attr('id')).addClass('b_e');
+				 $('#'+obj.attr('id')).attr("href","javascript:;");
+			 }else if(obj.attr('href').indexOf('delete')>0){
+				 $('#'+obj.attr('id')).removeClass('b_w taskdialog');
+				 $('#'+obj.attr('id')).addClass('b_e');
+				 $('#'+obj.attr('id')).attr("href","javascript:;");
+			 }
+			 popup.close();
+			}
+		})
+		.error(function() {
+			window.location.href = obj.attr('href');
+			popup.close();
+		});
+		return false;
+	});
+</script>
+<div class="cl">
+  <div class="cl">
+    <ul class="thread_types ttp cl">
+      <li$actives[new]><a href="home.php?mod=task&item=new">{lang task_new}</a></li>
+      <li$actives[doing]><a href="home.php?mod=task&item=doing">{lang task_doing}</a></li>
+      <li$actives[done]><a href="home.php?mod=task&item=done">{lang task_done}</a></li>
+      <li$actives[failed]><a href="home.php?mod=task&item=failed">{lang task_failed}</a></li>
+    </ul>
+  </div>
+  <!--{if empty($do)}-->
+  <!--{template home/space_task_list}-->
+  <!--{elseif $do == 'view'}-->
+  <!--{template home/space_task_detail}-->
+  <!--{/if}-->
+  
+</div>
+
+<!--{template common/footer}--> 

@@ -1,0 +1,63 @@
+<!--{template common/header}-->
+<style>
+.iinfoth{width: 80px}#resideprovince{width:137px}
+</style>
+<h3 class="flb"><em>{lang xigua_integralmall:shouhuo}</em>
+    <!--{if $_G['inajax']}--><span><a href="javascript:void(0);" class="flbc" onclick="hideWindow('myprofile')" title="{lang close}">{lang close}</a></span><!--{/if}-->
+</h3>
+<div style="width:600px">
+    <form action="plugin.php?id=xigua_integralmall&operation=myprofile&tid={$tid}" method="post" onsubmit="return savemyprofile(this);">
+<input type="hidden" name="formhash" value="{FORMHASH}">
+<input type="hidden" name="pf[residecityboxvalue]" id="residecityboxvalue" />
+    <table class="table">
+        <tbody>
+        <tr>
+            <td class="iinfoth"><span class="rq">*</span>{lang xigua_integralmall:shouhuor}:</td>
+            <td><input name="pf[receiver]" id="pfreceiver" value="{$pfinfo[receiver]}" class="px" /></td>
+        </tr>
+        <tr>
+            <td class="iinfoth"><span class="rq">*</span>{lang xigua_integralmall:suozai}:</td>
+            <td>
+                <div id="residecitybox" class="w200">$birthcityhtml</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="iinfoth"><span class="rq">*</span>{lang xigua_integralmall:xiangxi}:</td>
+            <td>
+                <input name="pf[address]" id="pfaddress" value="{$pfinfo[address]}" style="width:300px" class="px" />
+            </td>
+        </tr>
+        <tr>
+            <td class="iinfoth"><span class="rq">*</span>{lang xigua_integralmall:shoujihaoma}:</td>
+            <td><input name="pf[mobile]" id="pfmobile" value="{$pfinfo[mobile]}"  class="px" /></td>
+        </tr>
+        <tr>
+            <td class="iinfoth">&nbsp;</td>
+            <td>
+                <input name="dosubmit" type="submit" class="btn11 btn-orange btn-small" value="{lang xigua_integralmall:baocun}" />
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </form>
+</div>
+<script>
+function savemyprofile(obj){
+    if($('pfreceiver').value ==''){
+        showDialog('{lang xigua_integralmall:shouhuon}');
+        return false;
+    }
+    if($('pfaddress').value ==''){
+        showDialog('{lang xigua_integralmall:xiangxin}');
+        return false;
+    }
+    if (!/^1\d{10}$/.test($('pfmobile').value)) {
+        showDialog('{lang xigua_integralmall:geshi}');
+        return false;
+    }
+    $('residecityboxvalue').value = $('residecitybox').innerHTML;
+    obj.submit();
+    return false;
+}
+</script>
+<!--{template common/footer}-->

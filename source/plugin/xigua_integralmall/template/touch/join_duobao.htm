@@ -1,0 +1,55 @@
+<!--{template common/header}-->
+<style>
+.iduobao{width:100%;}
+.iduobaoinfo{margin-bottom:10px}
+.iduobao .flb{cursor: move;}
+.iduobao .pdiv{padding:0 10px 10px;font-size:14px}
+.iduobao textarea{width:100%;margin-top:10px;outline:0}
+.ired1,.ired2{color:#f74140;font-size:18px;}
+.ired2{font-size:12px}
+.iduobao .xg1{line-height:25px}
+</style>
+<form {$formfix} action="plugin.php?id=xigua_integralmall&operation=joinduobao&tid={$tid}" method="post" id="duobaoform">
+    <input type="hidden" name="formhash" value="{FORMHASH}">
+<div class="iduobao">
+    <div class="pdiv cl">
+        <div class="iduobaoinfo">
+            {lang xigua_integralmall:haiyou} <strong class="ired1">$mycredict</strong> $GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['title']
+            <br>{lang xigua_integralmall:zuidi}:<strong class="ired1">{$idata[rangeprice]}</strong> $GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['title']
+            <!--{if $idata[rangemaxprice]!=999999999}--><br>{lang xigua_integralmall:zuigao}:<strong class="ired1">{$idata[rangemaxprice]}</strong> $GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['title']<!--{/if}-->
+        </div>
+
+        <div class="por">
+            <a class="decrement" href="javascript:void(0);" ontouchstart="return idecre();">-</a>
+            <input autocomplete="off" class="itextarea" id="itxt" type="text" name="myprice" value="$can_min_price" onkeyup="renum(this, 2000);">
+            <a class="increment" href="javascript:void(0);" ontouchstart="return iincre();">+</a>
+        </div>
+        <!--{if $config[autoreply]}-->
+        <textarea name="replyinfo" class="itextarea"  rows="3">$autos[$idata[malltype]]</textarea>
+        <!--{/if}-->
+    </div>
+
+    <p class="o pns cl">
+        <button id="dosubmit"  class="btn btn-outline" type="button" ontouchstart="return duobaosubmit();" >{lang xigua_integralmall:chujia}</button>
+        <a class="btn btn-offline" href="javascript:void(0);" ontouchstart="hideWindow('confirm');return false;">{lang close}</a>
+    </p>
+    <input name="dosubmit" value="true"  type="hidden">
+</div>
+</form>
+<script>
+var min = $can_min_price;
+var max = $can_max_price;
+function duobaosubmit(){
+    xgajaxpost('duobaoform', '', '', '', 'dosubmit', function(ret){
+        if(ret.indexOf('succeedhandle_') !== -1){
+            alert(anchorSucceed(ret));
+            window.location.reload();
+        }else{
+            alert(anchorError(ret));
+        }
+    });
+    return false;
+}
+</script>
+<script src="source/plugin/xigua_integralmall/static/join.js"></script>
+<!--{template common/footer}-->

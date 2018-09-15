@@ -1,0 +1,51 @@
+<!--{template common/header}-->
+<!--{if $showcodeinfo}-->
+<h3 class="flb"><em>{lang xigua_integralmall:chakankami}</em>
+  <!--{if $_G['inajax']}--><span class="fr"><a href="javascript:void(0);" class="flbc" ontouchstart="hideWindow('view_message')" title="{lang close}">{lang close}</a></span><!--{/if}-->
+</h3>
+<table class="table" style="margin-bottom:0">
+  <thead>
+  <tr>
+    <th class="wt2">{lang xigua_integralmall:kami}</th>
+    <th class="wt3">{lang xigua_integralmall:yonghuming}</th>
+    <th class="wt4">{lang xigua_integralmall:zhuangtai}</th>
+  </tr>
+  </thead>
+</table>
+<div class="view_message_w">
+<table class="table">
+  <tbody>
+  <!--{loop $codeinfo $k $vv}-->
+  <tr <!--{if ($k+1) %2==0}-->class="odd"<!--{/if}-->>
+  <td class="wt2">{$vv[code]}</td>
+  <td class="wt3">{if $vv[username]}{$vv[username]}{else}-{/if}</td>
+  <td class="wt4">{$vv[stat]}</td>
+  </tr>
+  <!--{/loop}-->
+  </tbody>
+</table>
+</div>
+<!--{else}-->
+<h3 class="flb"><em>{lang xigua_integralmall:fahuojilu}</em>
+  <!--{if $_G['inajax']}--><span class="fr"><a href="javascript:void(0);" class="flbc" ontouchstart="hideWindow('view_message')" title="{lang close}">{lang close}</a></span><!--{/if}-->
+</h3>
+<div class="view_message_w">
+  <table class="table">
+    <tbody>
+    <!--{loop $codeinfo $k $vv}-->
+    <tr <!--{if ($k+1) %2==0}-->class="odd"<!--{/if}-->>
+    <td class="wt70">{if $pfary[$vv[uid]]}{$pfary[$vv[uid]]}{else}-{/if}</td>
+    <!--<td class="wt3">{if $vv[username]}{$vv[username]}{else}-{/if}</td>-->
+    <td class="wt30">{$vv[stat]}</td>
+    </tr>
+    <!--{/loop}-->
+    </tbody>
+  </table>
+</div>
+<script>
+function send_good(reciver){
+  showWindow('iextraform', 'plugin.php?id=xigua_integralmall&operation=viewprofile&tid={$tid}&reciver_uid='+reciver, 'get', 0, {cover:1});
+}
+</script>
+<!--{/if}-->
+<!--{template common/footer}-->

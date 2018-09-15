@@ -1,0 +1,40 @@
+<!--{template common/header}-->
+<div class="tip">
+<!--{if $_GET['op'] == 'delete'}-->
+	<form id="favoriteform_{$favid}" name="favoriteform_{$favid}" method="post" autocomplete="off" action="home.php?mod=spacecp&ac=favorite&op=delete&favid=$favid&type=$_GET[type]&mobile=2">
+		<input type="hidden" name="referer" value="{eval echo dreferer();}" />
+		<input type="hidden" name="deletesubmit" value="true" />
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+	<dt>{lang delete_favorite_message}</dt>
+	<dd><input type="submit" name="deletesubmitbtn" value="{lang determine}" class="formdialog button2"></dd>
+	</form>
+<!--{else}-->
+	<form method="post" autocomplete="off" id="favoriteform_{$id}" name="favoriteform_{$id}" action="home.php?mod=spacecp&ac=favorite&type=$type&id=$id&spaceuid=$spaceuid&mobile=2" >
+		<input type="hidden" name="favoritesubmit" value="true" />
+		<input type="hidden" name="referer" value="{eval echo dreferer();}" />
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+
+		<div class="weui-skin_ios">
+			<div class="weui-dialog__hd">
+				<!--{if $_GET[type] == 'forum'}-->{lang favorite_forum_confirm}<!--{elseif $_GET[type] == 'thread'}--> {lang favorite_thread_confirm}<!--{/if}-->{$title}
+			</div>
+
+			<div class="weui-cells">
+				<div class="weui-cell">
+					<div class="weui-cell__bd">
+						<input class="weui-input"  id="general_{$id}" name="description" type="text" placeholder="{lang favorite_description}" value="<!--{if $description}-->$description<!--{else}--><!--{/if}-->" />
+					</div>
+				</div>
+			</div>
+
+			<div class="weui-dialog__ft">
+				<input type="submit" name="favoritesubmit_btn" id="favoritesubmit_btn" class="formdialog weui-dialog__btn weui-dialog__btn_primary" value="{lang determine}" />
+				<a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" onclick="popup.close();">{lang cancel}</a>
+			</div>
+		</div>
+
+	</form>
+<!--{/if}-->
+</div>
+
+<!--{template common/footer}-->

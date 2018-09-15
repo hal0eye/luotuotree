@@ -1,0 +1,13 @@
+<!--{eval 
+	$_G[home_tpl_titles] = array('{lang task}');
+}-->
+<!--{template common/header_ajax}-->
+<ul class="task_users cl">
+	<!--{loop $parterlist $parter}-->
+		<li>
+			<div><a href="home.php?mod=space&uid=$parter[uid]"><!--{avatar($parter[uid],middle)}--></a>
+			<p><a href="home.php?mod=space&uid=$parter[uid]">$parter[username]</a></p></div>
+		</li>
+	<!--{/loop}-->
+</ul>
+<!--{template common/footer_ajax}-->

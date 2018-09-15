@@ -1,0 +1,254 @@
+.xheader{
+  position:relative;
+  margin-top:10px;
+}
+/*slider*/
+.sliderbox{
+  height:280px;
+  width:680px;
+  overflow:hidden;
+  position:relative;
+}
+/*slider end*/
+
+/*info*/
+.tshow_user_info{
+  float:right;
+  width:268px;
+  /*margin-right:10px;*/
+  height:280px;
+  border:1px solid #ececec;
+  overflow:hidden;
+  text-align:center;
+  color: #555;
+}
+.tshow_user_info .btn11{
+  width:160px;
+  margin:50px auto 0;
+  display: block;
+}
+.user_details{
+  padding:15px;
+}
+.user_details .btn11{
+  width:80px!important;
+}
+
+#mycount{
+  height:80px;
+}
+.user_details .my_p{
+  line-height:35px;
+  text-align:left;
+}
+.user_details .my_p em{
+  font-size:16px;
+}
+.tshow_user_info .welcome{
+  width:100%;
+  text-align:center;
+  margin-top:50px;
+}
+.tshow_user_info .iavatar{
+  margin:15px 0 15px 15px;
+  height: 100px;
+}
+.tshow_user_info .iavatar .avat{
+  display: block;
+  border-radius: 3px;
+  height:90px;
+  width:90px;
+  margin-right:15px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFAQMAAAC3obSmAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAGUExURezr7f///79OKw8AAAASSURBVAjXY1BgcGBoYOBgEAAABZIA+TFBZ34AAAAASUVORK5CYII=) 0 0 repeat;
+}
+.tshow_user_info .iavatar img{
+  height:80px;
+  width:80px;
+  margin: 5px;
+}
+
+.tshow_user_info  .userinfo2 div {
+  height:45px;
+  line-height:45px;
+  font-size:16px;
+  width:140px;
+  text-align: left;
+  word-break: break-all;
+ }
+.tshow_user_info .userinfo2 div.usercoin {
+  font-size: 14px;
+}
+.usercoin i {
+  font-size: 24px;
+  padding: 0 5px;
+  color: #f74140;
+  vertical-align: middle;
+}
+/*info end*/
+
+/*title*/
+.layout_title{
+  position:relative;
+  height:auto !important;
+  min-height:1px;
+  font-size:14px;
+  padding-bottom:10px;
+  border-bottom:3px solid #555;
+  margin-top:20px;
+}
+.layout_title h2{
+  display:inline-block;
+  font-size:28px;
+  line-height:28px;
+  color:#555;
+  font-weight:400;
+}
+.layout_title span{
+  margin-left:8px;
+  vertical-align:middle;
+}
+.layout_title .layout_menu{
+  position:absolute;
+  right:0;
+  bottom:0;
+  height:43px;
+  line-height:43px;
+  overflow:hidden;
+}
+.layout_title .layout_menu .layout_more{
+  float:left;
+  display:block;
+  height:43px;
+  margin-left:15px;
+}
+/*title end*/
+
+/*list*/
+.layout_list {
+  border-left: 1px solid #f0f0f0;
+  border-right: 1px solid #f0f0f0;
+  background: #fcfcfc;
+  overflow: hidden;
+}
+.layout_list ul {
+  width: 102%;
+}
+.layout_list ul li {
+  width: 241px;
+  display: inline-block;
+  float: left;
+  border-right: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.layout_list ul li:hover{
+  background:#f5f5f5;
+}
+.layout_list ul li .layout_pic {
+  display: block;
+  height: 241px;
+  text-align: center;
+}
+.layout_list ul li .layout_pic img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 160px;
+  height: 160px;
+}
+.layout_list ul li .layout_pic s {
+  content: " ";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+.layout_list ul li .layout_cont {
+  padding: 11px 15px;
+}
+.layout_list ul li .layout_cont .name {
+  display: block;
+  height: 35px;
+  overflow: hidden;
+  font-size:12px;
+}
+.layout_tips {
+  margin-top: 10px;
+  color: #999;
+}
+.layout_tips s {
+  float: right;
+  line-height:28px;
+}
+.layout_tips span {
+  color: #f94340;
+  font-size: 18px;
+  margin-left: 5px;
+}
+.price {
+  margin-top: 5px;
+}
+.price span {
+  color: #f94340;
+  font-size:14px;
+  margin-left:5px;
+  font-weight:bold;
+}
+.price span em {
+  font-size: 12px;
+  margin-left:5px;
+}
+.state_timer {
+  margin-top: 5px;
+}
+.state_timer .timer span {
+  margin-left: 5px;
+}
+.state_timer .state {
+  background: #f0f0f0;
+  height: 3px;
+  margin-top: 2px;
+  position: relative;
+  border-radius: 2px;
+  width:100%;
+  overflow: hidden;
+}
+.state_timer .state span {
+  position: absolute;
+  background: #ffb12a;
+  height: 3px;
+  top: 0;
+  left: 0;
+  width: 10%;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.bid_btn,.bid_btn:hover,.bid_btn:visited {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  background: #f74140;
+  border-radius: 2px;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+  border-bottom: 1px solid #d51211;
+  font-family: "Microsoft YaHei";
+}
+.bid_btn em {
+}
+.bid_btn s {
+  content: "";
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.bid_end {
+  background: #b0b0b0;
+  border-bottom: 1px solid #999;
+}
+
+/*list end*/
+.pager1{
+  padding:30px 0 30px 0;
+  clear:both;
+  width:100%;
+}

@@ -1,0 +1,86 @@
+<!--{template common/header}-->
+	<div id="pt">
+			<a href="./">{lang homepage}</a><em>&raquo;</em><a href="group.php">{$_G[setting][navs][3][navname]}</a>$navigation
+	</div>
+	<!--{ad/text/wp a_t}-->
+	<style id="diy_style" type="text/css"></style>
+	<div class="wp">
+		<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+	</div>
+	<div id="ct" class="ct2 wp cl">
+		<div class="mn">
+			<!--[diy=diycontenttop]--><div id="diycontenttop" class="area"></div><!--[/diy]-->
+			<!--[diy=diy5]--><div id="diy5" class="area"></div><!--[/diy]-->
+			<!--[diy=diycommendtop]--><div id="diycommendtop" class="area"></div><!--[/diy]-->
+			<!--{hook/index_header}-->
+			<!--[diy=diycategorytop]--><div id="diycategorytop" class="area"></div><!--[/diy]-->
+			<!--{hook/index_top}-->
+
+			<!--{loop $first $groupid $group}-->
+			<div class="gr_cate">
+				<div class="gr_tit">
+					<h2>
+						<a href="group.php?gid=$groupid">
+							$group[name]
+						</a>
+						<!--{if $group[groupnum]}--><span>($group[groupnum])</span><!--{/if}-->
+					</h2>
+					<p><!--{loop $group['secondlist'] $fid}--><a href="group.php?sgid=$fid">$second[$fid][name]</a><!--{/loop}--></p>
+				</div>
+				<div class="gr_con cl">
+					<ul>
+					<!--{loop $lastupdategroup[$groupid] $val}-->
+						<li style="width:25%;"><a href="forum.php?mod=group&fid=$val[fid]">$val[name]</a></li>
+					<!--{/loop}-->
+					</ul>
+				</div>
+			</div>
+			<!--{/loop}-->
+
+			<!--[diy=diycontentbottom]--><div id="diycontentbottom" class="area"></div><!--[/diy]-->
+			<!--{hook/index_bottom}-->
+		</div>
+
+		<div class="sd">
+			<!--{if helper_access::check_module('group')}-->
+			<a href="forum.php?mod=group&action=create" id="create_group_btn" class="mbm">创建我的圈圈</a>
+			<!--{/if}-->
+			<div class="drag">
+				<!--[diy=diysidetop]--><div id="diysidetop" class="area"></div><!--[/diy]-->
+			</div>
+			<div class="sd_box gr_top">
+				<!--[diy=newGr]--><div id="newGr" class="area"></div><!--[/diy]-->
+			</div>
+			<!--{hook/index_side_top}-->
+			<div class="drag">
+				<!--[diy=diysidemiddle]--><div id="diysidemiddle" class="area"></div><!--[/diy]-->
+			</div>
+			<!--{if $topgrouplist}-->
+				<div id="g_top" class="sd_box gr_top">
+					<div class="blocktitle title"><span class="titletext">{lang group_hot}</span></div>
+					<ul>
+						<!--{loop $topgrouplist $fid $group}-->
+						<li class="cl">
+							<div class="gr_img z"><img src="$group[icon]" width="48" height="48" /></div>
+							<div class="gr_txt z">
+								<a href="forum.php?mod=forumdisplay&action=list&fid=$group[fid]" title="$group[name]">$group[name]</a>
+								<p>$group[commoncredits] 人</p>
+							</div>
+							<a class="gr_btn y" href="forum.php?mod=group&fid=$group[fid]">加入</a>
+						</li>
+						<!--{/loop}-->
+					</ul>					
+				</div>
+			<!--{/if}-->
+			<div class="drag">
+				<!--[diy=diysidebottom]--><div id="diysidebottom" class="area"></div><!--[/diy]-->
+			</div>
+			<!--{hook/index_side_bottom}-->
+		</div>
+	</div>
+
+<div class="wp mtn">
+	<!--[diy=diy4]--><div id="diy4" class="area"></div><!--[/diy]-->
+</div>
+
+<!--{template common/footer}-->

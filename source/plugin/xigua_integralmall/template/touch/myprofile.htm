@@ -1,0 +1,67 @@
+<!--{template common/header}-->
+<style>
+input.itextarea{text-align:left}
+select {font-size: 100%;line-height: 18px;background-color: #f5f5f5;vertical-align: middle;margin: 0;font-family: inherit;color: #246183;
+  -webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;height:32px;padding: 0; padding-left: 12px; border-radius: 2px;
+    margin-top: 2px;}
+.m_c span{margin-left:0!important;}
+</style>
+<h3 class="flb"><em>{lang xigua_integralmall:shouhuo}</em>
+    <!--{if $_G['inajax']}--><span class="fr"><a href="javascript:void(0);" class="flbc" onclick="hideWindow('myprofile')" title="{lang close}">{lang close}</a></span><!--{/if}-->
+</h3>
+<div style="width:100%">
+    <form {$formfix} action="plugin.php?id=xigua_integralmall&operation=myprofile&tid={$tid}" method="post"  id="savemyprofile1">
+<input type="hidden" name="formhash" value="{FORMHASH}">
+<input type="hidden" name="pf[residecityboxvalue]" id="residecityboxvalue" />
+    <table class="table">
+        <tbody>
+        <tr>
+            <td><input name="pf[mobile]" id="pfmobile" value="{$pfinfo[mobile]}"  class="itextarea" placeholder="{lang xigua_integralmall:shoujihaoma}" /></td>
+        </tr>
+        <tr>
+            <td><input name="pf[receiver]" id="pfreceiver" value="{$pfinfo[receiver]}" class="itextarea" placeholder="{lang xigua_integralmall:shouhuor}" /></td>
+        </tr>
+        <tr>
+            <td>
+                <div id="residecitybox" class="itextarea">$birthcityhtml</div>
+                <input name="pf[address]" id="pfaddress" value="{$pfinfo[address]}" class="itextarea" placeholder="{lang xigua_integralmall:suozai}{lang xigua_integralmall:xiangxi}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="dosubmit2" type="button" style="width:100%" class="btn btn-orange btn-small" onclick="return savemyprofile($('savemyprofile1'))">{lang xigua_integralmall:baocun}</button>
+                <input name="dosubmit" value="1" type="hidden" />
+               <div id="pfoirlxtraback"></div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </form>
+</div>
+<script>
+function savemyprofile(obj){
+    if($('pfreceiver').value ==''){
+        alert('{lang xigua_integralmall:shouhuon}');
+        return false;
+    }
+    if($('pfaddress').value ==''){
+      alert('{lang xigua_integralmall:xiangxin}');
+        return false;
+    }
+    if (!/^1\d{10}$/.test($('pfmobile').value)) {
+      alert('{lang xigua_integralmall:geshi}');
+        return false;
+    }
+    $('residecityboxvalue').value = $('residecitybox').innerHTML;
+    xgajaxpost('savemyprofile1', 'pfoirlxtraback', '', '', 'dosubmit2', function(ret){
+      if(ret.indexOf('succeedhandle_') !== -1){
+        alert(anchorSucceed(ret));
+          window.location.reload();
+      }else{
+        alert(anchorError(ret));
+      }
+    });
+    return false;
+}
+</script>
+<!--{template common/footer}-->

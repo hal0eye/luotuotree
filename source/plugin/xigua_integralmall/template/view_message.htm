@@ -1,0 +1,71 @@
+<!--{template common/header}-->
+<style>
+.view_message_w{width:600px;max-height:380px;*height:380px;overflow-y:auto;}
+.wt1{ width:50px;}
+.wt2{width:230px}
+.wt3{ width:100px;}
+.wt4{ width:100px;}
+</style>
+<!--{if $showcodeinfo}-->
+<h3 class="flb"><em>{lang xigua_integralmall:chakankami}</em>
+  <!--{if $_G['inajax']}--><span><a href="javascript:void(0);" class="flbc" onclick="hideWindow('view_message')" title="{lang close}">{lang close}</a></span><!--{/if}-->
+</h3>
+<table class="table" style="margin-bottom:0">
+  <thead>
+  <tr>
+    <!--<th class="wt1">{lang xigua_integralmall:bianhao}</th>-->
+    <th class="wt2">{lang xigua_integralmall:kami}</th>
+    <th class="wt3">{lang xigua_integralmall:yonghuming}</th>
+    <th class="wt4">{lang xigua_integralmall:zhuangtai}</th>
+  </tr>
+  </thead>
+</table>
+<div class="view_message_w">
+<table class="table">
+  <tbody>
+  <!--{loop $codeinfo $k $vv}-->
+  <tr <!--{if ($k+1) %2==0}-->class="odd"<!--{/if}-->>
+    <!--<td class="wt1">{$vv[vid]}</td>-->
+    <td class="wt2">{$vv[code]}</td>
+    <td class="wt3">{if $vv[username]}{$vv[username]}{else}-{/if}</td>
+    <td class="wt4">{$vv[stat]}</td>
+  </tr>
+  <!--{/loop}-->
+  </tbody>
+</table>
+</div>
+<!--{else}-->
+<h3 class="flb"><em>{lang xigua_integralmall:fahuojilu}</em>
+  <!--{if $_G['inajax']}--><span><a href="javascript:void(0);" class="flbc" onclick="hideWindow('view_message')" title="{lang close}">{lang close}</a></span><!--{/if}-->
+</h3>
+<table class="table" style="margin-bottom:0">
+  <thead>
+  <tr>
+    <!--<th class="wt1">{lang xigua_integralmall:bianhao}</th>-->
+    <th class="wt2">{lang xigua_integralmall:shouhuoxin}</th>
+    <th class="wt3">{lang xigua_integralmall:yonghuming}</th>
+    <th class="wt4">{lang xigua_integralmall:zhuangtai}</th>
+  </tr>
+  </thead>
+</table>
+<div class="view_message_w">
+  <table class="table">
+    <tbody>
+    <!--{loop $codeinfo $k $vv}-->
+    <tr <!--{if ($k+1) %2==0}-->class="odd"<!--{/if}-->>
+    <!--<td class="wt1">{$vv[vid]}</td>-->
+    <td class="wt2">{$pfary[$vv[uid]]}</td>
+    <td class="wt3">{if $vv[username]}{$vv[username]}{else}-{/if}</td>
+    <td class="wt4">{$vv[stat]}</td>
+    </tr>
+    <!--{/loop}-->
+    </tbody>
+  </table>
+</div>
+<script>
+function send_good(reciver){
+  showWindow('iextraform', 'plugin.php?id=xigua_integralmall&operation=viewprofile&tid={$tid}&reciver_uid='+reciver, 'get', 0, {cover:1});
+}
+</script>
+<!--{/if}-->
+<!--{template common/footer}-->

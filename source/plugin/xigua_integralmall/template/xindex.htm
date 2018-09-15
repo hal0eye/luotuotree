@@ -1,0 +1,172 @@
+<!--{template common/header}-->
+<link href="source/plugin/xigua_integralmall/static/basepc.css?_=20151008" rel="stylesheet"/>
+<link href="source/plugin/xigua_integralmall/static/main.css?_=20150906" rel="stylesheet"/>
+<link href="source/plugin/xigua_integralmall/static/flexslider.css?_=20150906" rel="stylesheet"/>
+<script>var handlerid = [];</script>
+<!--{if $config[indexw]!=680}--><style>.sliderbox{width:{$config[indexw]}px!important;}</style><!--{/if}-->
+<!--{if $config[listitemwidth]!=241}--><style>.layout_list ul li{width:{$config[listitemwidth]}px!important;}</style><!--{/if}-->
+<div class="container">
+<!--{if !$noheader}-->
+  <div class="xheader cl">
+    <div class="tshow_user_info">
+      <!--{if $_G[uid]}-->
+      <div class="cl">
+        <div class="iavatar cl">
+          <a class="avat fll"><!--{avatar($_G[uid], 'big')}--></a>
+
+          <div class="userinfo2 fr">
+            <div class="username"><a target="_blank" href="home.php?mod=space&uid={$_G[uid]}" hidefocus="true">{$_G[username]}</a></div>
+            <div class="usercoin">{$config[ctitle]}:<i class="js_coin">{$mycredict}</i></div>
+          </div>
+        </div>
+
+        <div class="user_details">
+          <div id="mycount">
+            <p class="my_p"><a href="plugin.php?id=xigua_integralmall&my=my">{lang xigua_integralmall:faqi}<em>0</em></a></p>
+            <p class="my_p"><a href="plugin.php?id=xigua_integralmall&my=join">{lang xigua_integralmall:canyu}<em>0</em></a></p>
+          </div>
+          <div class="cl">
+            {loop $pcnav $pcnavk $pcnavv}
+            <a class="btn11 btn-orangered <!--{if $pcnavk==0}-->fll<!--{else}-->fr<!--{/if}--> mt0" href="{$pcnavv[1]}" target="_blank">$pcnavv[0]</a>
+            {/loop}
+          </div>
+        </div>
+
+      </div>
+      <!--{else}-->
+      <a class="btn11 btn-outline" href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href)">{lang login}</a>
+      <a class="btn11 btn-orangered2 mt30" href="member.php?mod={$_G[setting][regname]}">$_G['setting']['reglinkname']</a>
+      <div class="welcome"><img src="source/plugin/xigua_integralmall/static/images/welcome.png"></div>
+      <!--{/if}-->
+    </div>
+    <div class="sliderbox flexslider1">
+      <ul class="slides">
+{loop $slderindex $pic}
+        <li><a href="$pic[1]"><img src="{$pic[0]}" width="100%"/></a></li>
+{/loop}
+      </ul>
+    </div>
+  </div>
+<!--{/if}-->
+
+
+<!--{eval $idatalist = array('1'=> $ilist[1], '5' => $ilist[5], '3'=>$ilist[3], '2'=>$ilist[2], '4'=>$ilist[4]);}-->
+<!--{loop $idatalist $kk $vv}-->
+<!--{if $ilist[$kk]}-->
+  <div>
+    <div class="layout_title">
+      <h2>$htitle[$kk][0]</h2><span>$htitle[$kk][1]</span>
+
+      <div class="layout_menu cl">
+<!--{if !$noheader}-->
+        <a href="plugin.php?id=xigua_integralmall&mtype={$kk}" class="layout_more">{lang xigua_integralmall:more}</a>
+<!--{else}-->
+        <a href="plugin.php?id=xigua_integralmall" class="layout_more">{lang xigua_integralmall:back}</a>
+<!--{/if}-->
+      </div>
+    </div>
+
+    <div class="layout_list">
+      <ul class="cl">
+        <!--{loop $ilist[$kk] $k $v}-->
+        <li>
+          <a href="forum.php?mod=viewthread&tid={$v[tid]}" target="_blank" class="layout_pic">
+            <img src="{$v[attachment]}" ><s></s>
+          </a>
+
+          <div class="layout_cont">
+            <a class="name" target="_blank" href="forum.php?mod=viewthread&tid={$v[tid]}">{$v[goodname]}</a>
+
+            <div class="price cl">{lang xigua_integralmall:cur}:<span>{$v[sellprice]}</span>
+              <!--{if $kk != 4}--><em>{$GLOBALS['_G']['setting']['extcredits'][$v['ccd']]['title']}</em><!--{/if}-->
+              &nbsp;&nbsp;&nbsp;<em class="l27">{lang xigua_integralmall:yi}$titles[$kk]:{$v[give]}{lang xigua_integralmall:r}</em></div>
+            <div class="state_timer">
+              <div class="clearfix">
+                <p id="i_time{$v[tid]}" class="timer"></p>
+              </div>
+              <div class="state"><span id="i_stat{$v[tid]}"></span></div>
+            </div>
+            <!--{if $v[finish]}-->
+            <a href="javascript:void(0);" class="bid_btn btn-offline">{lang xigua_integralmall:yijieshu}</a>
+            <!--{else}-->
+            <a id="i_btn{$v[tid]}" target="_blank" href="forum.php?mod=viewthread&tid={$v[tid]}" class="bid_btn"><em></em>{lang xigua_integralmall:yemiedie}{$titles[$kk]}<s></s></a>
+            <!--{/if}-->
+            <script>handlerid.push({tid:'$v[tid]', mend:'$v[mallend_string]', mstart:'$v[mallstart_string]'});</script>
+          </div>
+        </li>
+        <!--{/loop}-->
+        </ul>
+    </div>
+  </div>
+<!--{/if}-->
+<!--{/loop}-->
+
+<!--{if $noheader}--><div class="pager1">{$multi}</div><!--{/if}-->
+
+</div>
+<script src="source/plugin/xigua_integralmall/static/jquery-1.11.1.min.js"></script>
+<script src="source/plugin/xigua_integralmall/static/jquery.flexslider-min.js"></script>
+<script>
+jQuery.noConflict();
+setTimeout(function(){
+  jQuery.noConflict();
+}, 300);
+<!--{if !$noheader}-->
+jQuery(window).load(function(){
+  jQuery('.flexslider1').flexslider({
+    animation: "slide",
+    prevText:'',
+    nextText:'',
+    slideshow:true,
+    slideshowSpeed:3000
+  });
+});
+ajaxget('plugin.php?id=xigua_integralmall&count=1&formhash={FORMHASH}', 'mycount');
+<!--{/if}-->
+var handler = [];
+if(handlerid.length>0){
+  for(var i =0; i<handlerid.length; i++){
+    var ind = handlerid[i];
+    GetRunTime(ind.tid, ind.mend, ind.mstart);
+  }
+}
+function GetRunTime(tid, mallend, mallstart){
+  var endtime= new Date(mallend);
+  var starttime= new Date(mallstart);
+  var keeptime = endtime - starttime;
+  var itimer = document.getElementById("i_time"+tid);
+  var itimerwidth = document.getElementById("i_stat"+tid);
+  var nowtime = new Date();
+  var t = endtime.getTime() - nowtime.getTime();
+  if(t<=0){
+    itimerwidth.style.width = '0%';
+    itimer.innerHTML = '{lang xigua_integralmall:jieshushijian}:<span class="timer">'+mallend+'</span>';
+    return;
+  }
+  var dd = t/1000;
+
+  var d=Math.floor(dd/3600/24);
+  var h=Math.floor(dd/3600%24);
+  var m=Math.floor(dd/60%60);
+  var s=Math.floor(dd%60);
+  var width = t/keeptime*100;
+
+  var ddis = '', hdis = '', mdis = '', sdis = '';
+
+  if(h<10){h = '0'+h;}
+  if(m<10){m = '0'+m;}
+  if(s<10){s = '0'+s;}
+  if(d){
+    ddis = '<strong>'+d+'</strong>' + "{lang xigua_integralmall:day}";
+  }
+  hdis = '<strong>'+h+'</strong>' + "{lang xigua_integralmall:h}";
+  mdis = '<strong>'+m+'</strong>' + "{lang xigua_integralmall:m}";
+  sdis = '<strong>'+s+'</strong>' + "{lang xigua_integralmall:s}";
+  itimer.innerHTML = '{lang xigua_integralmall:shengyu}:<span class="timer">'+ddis + hdis + mdis + sdis+'</span>';
+  itimerwidth.style.width = width+'%';
+  setTimeout(function(){
+    GetRunTime(tid, mallend, mallstart);
+  }, 1000);
+}
+</script>
+<!--{template common/footer}-->

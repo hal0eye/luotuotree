@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="{CHARSET}">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta content="telephone=no" name="format-detection"/>
+  <title>{$navtitle}</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <link href="source/plugin/xigua_integralmall/static/base.css?t={$pluginversion}" rel="stylesheet" />
+  <style>
+    {if $config[navbg]}.hnav{background-color:$config[navbg]}{/if}
+    {if $_GET[ifr]}.content_inner{padding:0}html,body{background:#fff}{/if}
+  </style>
+  <script src="source/plugin/xigua_integralmall/static/polyfill.min.js"></script>
+</head>
+<body>
+<div id="page-loading-overlay">
+  <div class="ajxloading"></div>
+</div>
+<!--{if $idata[malltype]==5}-->
+<style>
+  .iinfo th, .iinfo td{vertical-align:middle}
+  .taglist12 a{cursor:pointer;
+    padding:7px 15px;
+    vertical-align: middle;
+    border: 1px solid #d1d1d1;background:#fff;
+    float:left;margin:5px 5px 0 0;border-radius:2px;    white-space: nowrap;
+  }
+  .taglist12{margin:0 0 20px}
+  .taglist12 a.selected{
+    background:#fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAxMS8wNS8xNSqv2bYAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAAW0lEQVQokZXPMRLAIAgAwSOV+ZO/N3+yJBUZgpqgjYV7jMDGaRSVHQyQCgynAo9/g4g/gxkGOLK4ap8HjaL2GPEQ+MmG7L7kBNwO8Rt+quEnWC1Ytb8wgKzw6twMfSdPrt7/oQAAAABJRU5ErkJggg==) no-repeat right bottom;
+    border:2px solid #be0106;
+    margin:4px 4px -1px -1px;
+    text-decoration:none;
+  }
+</style>
+<script>var shutype = 0;</script>
+<!--{/if}-->
+<div class="container_map_ami container_map">
+<!--{if !$_GET[ifr]}-->
+  <div class="header cl">
+    <a style="width:50px;display:block;padding:11px" href="plugin.php?id=xigua_integralmall">
+      <img src="source/plugin/xigua_integralmall/static/images/back.png" style="font-size:25px;display: block;overflow: hidden;height:22px;line-height:22px;"/>
+    </a>
+    <!--{if $_G[uid]}--><a class="member-link" id="icon-dot-top" href="javascript:void(0);"><img src="source/plugin/xigua_integralmall/static/images/m3.png" /></a><!--{else}-->
+    <a href="$loginurl" class="member-link" >{lang xigua_integralmall:dl}</a>
+    <!--{/if}-->
+  </div>
+  <!--{if $_G[uid]}-->
+  <div id="dot-top-mask">
+    <div id="dot-top">
+      <div class="cl">
+        <div class="hd_menu_img">
+          <a href="{if $wechat[wsq_allow]}http://wsq.discuz.com/?c=index&a=profile&f=wx&siteid=$wechat[wsq_siteid]&mobile=2{else}home.php?mod=space&uid=$_G[uid]&do=profile{/if}">
+            <img src="{avatar($_G[uid], 'big', 1)}">
+          </a>
+        </div>
+        <a href="javascript:void(0);" >
+          {lang xigua_integralmall:my}{$GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['title']}:<i class="js_coin">{$mycredict}</i>
+        </a>
+        <!--<a id="floatshare">share</a>-->
+        <!--{loop $rtnav $rtv}-->
+        <a href="$rtv[1]">$rtv[0]</a>
+        <!--{/loop}-->
+      </div>
+    </div>
+  </div>
+  <!--{/if}-->
+<!--{/if}-->
+
+<div class="content_inner">
+  <!--{if !$_GET[ifr]}--><h2 class="ih2">{$idata[goodname]}</h2><!--{/if}-->
+  <!--{if $idata[attachment]}-->
+  <div class="swipe cl">
+    <div class="swipe-wrap">
+      <!--{loop $idata[attachment] $kk $pic}-->
+      <div><a><img src="{$pic}" /></a></div>
+      <!--{/loop}-->
+    </div>
+    <nav class="bullets">
+      <ul class="position">
+        <!--{loop $idata[attachment] $k $pic}-->
+        <li {if $k==0}class="current"{/if}></li>
+        <!--{/loop}-->
+      </ul>
+    </nav>
+  </div>
+  <!--{elseif $_GET[from1]}-->
+  <div class="iimage">
+    <img src="{$idata[attachment][0]}" style="width:100vw">
+  </div>
+  <!--{else}-->
+  <div class="iimage">
+    <img src="static/image/common/nophoto.gif" style="width:100vw">
+  </div>
+  <!--{/if}-->
+  <div class="iinfo">
+    <div class="intro">
+      <table>
+        <tr>
+          <th>{lang xigua_integralmall:weiguan}</th>
+          <td>{$idata[hot]}{lang xigua_integralmall:ci}</td>
+        </tr>
+        <tr>
+          <th>{lang xigua_integralmall:shichangjia}</th>
+          <td><del>{lang xigua_integralmall:y}{$idata[marketprice]}{lang xigua_integralmall:yuan}</del></td>
+        </tr>
+        <tr>
+          <th>$current_price_title</th>
+          <td><span class="ired" id="ired">$current_price</span>{$GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['unit']}{$GLOBALS['_G']['setting']['extcredits'][$idata['ccd']]['title']}</td>
+        </tr>
+        <tr>
+          <th>{lang xigua_integralmall:shangpinshu}</th>
+          <td>{lang xigua_integralmall:sheng} <span class="ired2">{$idata[leavenum]}</span> {lang xigua_integralmall:jian} {if $idata[lognum]}/ {lang xigua_integralmall:yishou} <span class="xi1">$idata[lognum]</span> {lang xigua_integralmall:jian}{/if}</td>
+        </tr>
+        <tr>
+          <th id="timer_th">{if $finish}{lang xigua_integralmall:jieshushijian}{else}{lang xigua_integralmall:shengyu}{/if}</th>
+          <td>
+            <div class="timer" id="timer"></div>
+            <div class="timer-process"><span id="timer-width"></span></div>
+          </td>
+        </tr>
+        <!--{if $idata[malltype]==5}-->
+        <tr>
+          <th>{lang xigua_integralmall:shangpinshuxing}</th>
+          <td>
+            <div class="cl taglist12">
+              <!--{loop $idata[shuxing][shuxing] $kkk $vvv}-->
+              <a data-price="{$idata[shuxing][shuxingprice][$kkk]}" ontouchstart="select12(this, '{$kkk}');return false;" <!--{if $kkk ==0}-->class="selected"<!--{/if}-->>{$vvv}</a>
+              <!--{/loop}-->
+            </div>
+          </td>
+        </tr>
+        <!--{/if}-->
+
+      </table>
+    </div>
+
+    <style>
+      .iinfo .bottombtn a{margin:10px 0 0 0!important;}
+    </style>
+    <div class="bottombtn cl">
+      <!--{if !$finish && !$notstart && $idata[leavenum]>0}-->
+        <!--{if $_G[uid]}-->
+          <!--{if $idata[malltype]==5}-->
+          <a href="javascript:void(0);" ontouchstart="showWindow('confirm', 'plugin.php?id=xigua_integralmall&operation=$joinaction&shuxing='+shutype+'&tid=$tid', 'get', 0,{cover:1});doane(event);" class="btn btn-outline">$btn_title</a>
+          <!--{else}-->
+        <a href="javascript:void(0);" ontouchstart="showWindow('confirm', 'plugin.php?id=xigua_integralmall&operation=$joinaction&tid=$tid', 'get', 0 ,{cover:1});doane(event);" class="btn btn-outline">$btn_title</a>
+          <!--{/if}-->
+        <!--{else}-->
+        <a href="$loginurl" target="_top" class="btn btn-outline">$btn_title</a>
+        <!--{/if}-->
+      <!--{elseif $notstart}-->
+      <a href="javascript:void(0);" class="btn btn-offline">{lang xigua_integralmall:weikaishi}</a>
+      <!--{else}-->
+      <a href="javascript:void(0);" class="btn btn-offline">{lang xigua_integralmall:yijieshu}</a>
+      <!--{/if}-->
+
+      <!--{if $showcodeinfo}-->
+      <a href="javascript:void(0);" class="btn btn-qing" ontouchstart="showWindow('view_message', 'plugin.php?id=xigua_integralmall&operation=view_message&tid=$tid', 'get', 0,{cover:1});doane(event);" >{lang xigua_integralmall:chakankami}</a>
+      <!--{elseif $codeinfo}-->
+      <a href="javascript:void(0);" class="btn btn-qing" ontouchstart="showDialog('$mycodeinfo', 'info', '{lang xigua_integralmall:chakankami}',null, 1);doane(event);">{lang xigua_integralmall:chakankami}</a>
+      <!--{/if}-->
+      <!--{if $showgoodinfo}-->
+      <a href="javascript:void(0);" class="btn btn-qing" ontouchstart="showWindow('view_message', 'plugin.php?id=xigua_integralmall&operation=view_message&tid=$tid', 'get', 0,{cover:1});doane(event);" >{lang xigua_integralmall:fahuojilu}</a>
+      <!--{/if}-->
+      <!--{if $showmygoodinfo}-->
+      <a href="javascript:void(0);" class="btn btn-qing" ontouchstart="showWindow('iextraform', 'plugin.php?id=xigua_integralmall&operation=viewprofile&tid=$tid&reciver_uid=$_G[uid]', 'get', 0,{cover:1});doane(event);" >{lang xigua_integralmall:fahuojilu}</a>
+      <!--{/if}-->
+      <!--{if $showmyprofile}-->
+      <a href="javascript:void(0);" class="btn btn-qing" ontouchstart="showWindow('myprofile', 'plugin.php?id=xigua_integralmall&operation=myprofile&tid=$tid', 'get', 0,{cover:1});doane(event);" >{lang xigua_integralmall:shouhuo}</a>
+      <!--{/if}-->
+    </div>
+  </div>
+
+  <!--{if !$_GET[ifr]}-->
+  <div class="cl mtp20" id="ilistinfo"></div>
+  <div class="message">$message</div>
+  <!--{/if}-->
+  <!--{if $_GET['showilist']}-->
+  <div class="cl mtp20" id="ilistinfo"></div>
+  <!--{/if}-->
+</div>
+
+</div>
+
+<div id="backtotop" class="backtotop"><span class="icon-vertical-align-top"></span></div>
+
+<div id="ajaxwaitid"></div>
+<div id="append_parent"></div>
+<script type="text/javascript">var STYLEID = '{STYLEID}', STATICURL = '{STATICURL}', IMGDIR = '{IMGDIR}', VERHASH = '{VERHASH}', charset = '{CHARSET}', discuz_uid = '$_G[uid]', cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}', showusercard = '{$_G[setting][showusercard]}', attackevasive = '{$_G[config][security][attackevasive]}', disallowfloat = '{$_G[setting][disallowfloat]}', creditnotice = '<!--{if $_G['setting']['creditnotice']}-->$_G['setting']['creditnames']<!--{/if}-->', defaultstyle = '$_G[style][defaultextstyle]', REPORTURL = '$_G[currenturl_encode]', SITEURL = '$_G[siteurl]', JSPATH = '$_G[setting][jspath]';</script>
+<script src="source/plugin/xigua_integralmall/static/common.js?t={$pluginversion}"></script>
+
+<script src="source/plugin/xigua_integralmall/static/jquery.min.js?t={$pluginversion}"></script>
+<script src="source/plugin/xigua_integralmall/static/custom.js?t={$pluginversion}"></script>
+<script>
+  jQuery.noConflict();
+  function select12(obj, kkk){
+    jQuery(obj).siblings().removeClass('selected');
+    jQuery(obj).addClass('selected');
+    document.getElementById('ired').innerHTML = obj.getAttribute('data-price');
+    shutype = kkk;
+    return false;
+  }
+
+  var endtime= new Date('{$idata[mallend_string]}');
+  var starttime= new Date('{$idata[mallstart_string]}');
+  var keeptime = endtime - starttime;
+  var itimer = document.getElementById("timer");
+  var itimerwidth = document.getElementById("timer-width");
+  var handler = '';
+  function GetRTime(){
+    var nowtime = new Date();
+    var t = endtime.getTime() - nowtime.getTime();
+    if(t<0){
+      clearInterval(handler);
+      itimer.innerHTML = '{$idata[mallend_string]}';
+      itimerwidth.style.width = '0%';
+      $('timer_th').innerHTML = '{lang xigua_integralmall:jieshushijian}';
+      return;
+    }
+    var dd = t/1000;
+
+    var d=Math.floor(dd/3600/24);
+    var h=Math.floor(dd/3600%24);
+    var m=Math.floor(dd/60%60);
+    var s=Math.floor(dd%60);
+    var o=Math.floor(t/10%100);
+    var width = t/keeptime*100;
+
+    var ddis = '', hdis = '', mdis = '', sdis = '';
+    if(h<10){h = '0'+h;}
+    if(m<10){m = '0'+m;}
+    if(s<10){s = '0'+s;}
+    if(o<10){o = '0'+o;}
+    if(d){
+      ddis = '<strong>'+d+'</strong>' + "{lang xigua_integralmall:day}";
+    }
+    hdis = '<strong>'+h+'</strong>' + "{lang xigua_integralmall:h}";
+    mdis = '<strong>'+m+'</strong>' + "{lang xigua_integralmall:m}";
+    sdis = '<strong>'+s+'</strong>' + "{lang xigua_integralmall:s}";
+    itimer.innerHTML = ddis + hdis + mdis + sdis + ('<strong>'+o+'</strong>');
+    itimerwidth.style.width = width+'%';
+  }
+  handler = setInterval(GetRTime, 10);
+
+if($('ilistinfo')){
+  ajaxget('plugin.php?id=xigua_integralmall&operation=view&tid=$tid&page=1', 'ilistinfo');
+}
+
+function xgajaxpost(formid, showid, waitid, showidclass, submitbtn, recall) {
+  var waitid = typeof waitid == 'undefined' || waitid === null ? showid : (waitid !== '' ? waitid : '');
+  var showidclass = !showidclass ? '' : showidclass;
+  var ajaxframeid = 'ajaxframe';
+  var ajaxframe = $(ajaxframeid);
+  var curform = $(formid);
+  var formtarget = curform.target;
+
+ /* var handleResult = function() {
+    var s = '';
+    var evaled = false;
+
+    showloading('none');
+    try {
+      s = $(ajaxframeid).contentWindow.document.XMLDocument.text;
+    } catch(e) {
+      try {
+        s = $(ajaxframeid).contentWindow.document.documentElement.firstChild.wholeText;
+      } catch(e) {
+        try {
+          s = $(ajaxframeid).contentWindow.document.documentElement.firstChild.nodeValue;
+        } catch(e) {
+          s = 'Error.';
+        }
+      }
+    }
+    evaled = true;
+    if(s != '' && s.indexOf('ajaxerror') != -1) {
+//      evalscript(s);
+      s.replace(/script/, 'div');
+    }
+
+    if(submitbtn) {
+      submitbtn.disabled = false;
+    }
+
+    ajaxerror = null;
+    if(curform) curform.target = formtarget;
+    if(typeof recall == 'function') {
+      recall(s);
+    } else {
+      eval(recall);
+    }
+    if(!evaled) evalscript(s);
+    ajaxframe.loading = 0;
+    setTimeout(
+        function(){
+          $('append_parent').removeChild(ajaxframe.parentNode);
+        },
+        1000
+    );
+  };
+
+  if(!ajaxframe) {
+    var div = document.createElement('div');
+    div.style.display = 'none';
+    div.innerHTML = '<iframe name="' + ajaxframeid + '" id="' + ajaxframeid + '" loading="1"></iframe>';
+    $('append_parent').appendChild(div);
+    ajaxframe = $(ajaxframeid);
+  } else if(ajaxframe.loading) {
+    return false;
+  }
+
+  _attachEvent(ajaxframe, 'load', handleResult);
+*/
+  showloading();
+  curform.target = ajaxframeid;
+  var action = curform.getAttribute('action');
+  action = hostconvert(action);
+  curform.action = action.replace(/\&inajax\=1/g, '')+'&inajax=1';
+  /* curform.submit();*/
+  if(submitbtn) {
+    submitbtn.disabled = true;
+  }
+
+    var form = jQuery('#'+formid);
+    jQuery.ajax({
+        type: 'POST',
+        url: action.replace(/\&inajax\=1/g, '')+'&inajax=1',
+        data: form.serialize(),
+        dataType: 'html'
+    })
+        .success(function (s) {
+            showloading('none');
+            if(submitbtn) {
+                submitbtn.disabled = false;
+            }
+
+            ajaxerror = null;
+            if(curform) curform.target = formtarget;
+            if(typeof recall == 'function') {
+                recall(s);
+            } else {
+                eval(recall);
+            }
+            if(!evaled) evalscript(s);
+        })
+        .error(function () {
+            alert('Error');
+            showloading('none');
+            if(submitbtn) {
+                submitbtn.disabled = false;
+            }
+
+            ajaxerror = null;
+            if(curform) curform.target = formtarget;
+            if(typeof recall == 'function') {
+                recall(s);
+            } else {
+                eval(recall);
+            }
+            if(!evaled) evalscript(s);
+        });
+
+
+
+
+
+    doane();
+  return false;
+}
+
+  function anchorError(str){
+    var reg=/errorhandle_\(['"]([^"']*)['"],/g;
+    var s = str.match(reg);
+    return RegExp.$1;
+  }
+  function anchorSucceed(str){
+    var reg=/succeedhandle_\(['"][^"']*['"],\s*['"]([^"']*)['"],/g;
+    var s = str.match(reg);
+    return RegExp.$1;
+  }
+</script>
+</body>
+</html>
