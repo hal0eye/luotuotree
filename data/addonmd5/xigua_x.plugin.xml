@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[xigua_x.plugin]]></item>
+	<item id="RevisionID"><![CDATA[69726]]></item>
+	<item id="SN"><![CDATA[2018052417Q7woolCOLq]]></item>
+	<item id="RevisionDateline"><![CDATA[1505710801]]></item>
+	<item id="Data">
+		<item id="/install.php"><![CDATA[5be32d08482944450546845b316d44b4]]></item>
+		<item id="/post.inc.php"><![CDATA[b6724eed9e38518e519d15e37987d0f7]]></item>
+		<item id="/xWechat.lib.class.php"><![CDATA[70f520f6cd18e87b8dbf46df1f17ce57]]></item>
+		<item id="/hook.class.php"><![CDATA[5e877887cd9349d4e9ca321c98d703f8]]></item>
+		<item id="/template/myset.php"><![CDATA[e49d6e470e57ef85989c8574b4e984c4]]></item>
+		<item id="/template/touch/myset.php"><![CDATA[fb8b75e0df55804b279df8dd92bb9aa1]]></item>
+		<item id="/cron.inc.php"><![CDATA[de3d0367423e24954b1aae5af346d91a]]></item>
+		<item id="/ma/post.inc.php"><![CDATA[c5fe2f7bf8f395cecb12796b88a8f236]]></item>
+		<item id="/ma/cron_send.php"><![CDATA[34f6ef66dca7dd2cf5489d29c3268733]]></item>
+		<item id="/discuz_plugin_xigua_x_TC_UTF8.xml"><![CDATA[4ea2cf4ebf6b3419bf6724bd39bd2afb]]></item>
+		<item id="/discuz_plugin_xigua_x_SC_GBK.xml"><![CDATA[7cb79a6a812f386d86260e5902a8b6cd]]></item>
+		<item id="/send.inc.php"><![CDATA[9c37571987b9f72107e8cb17f08c5f1c]]></item>
+		<item id="/discuz_plugin_xigua_x_TC_BIG5.xml"><![CDATA[1719f90f697925a083d41455c9101031]]></item>
+		<item id="/uninstall.php"><![CDATA[4776e7e7f359a2194e970aade0a4a463]]></item>
+		<item id="/table/table_xigua_x_fans.php"><![CDATA[d0f5883cb35f7398034d155540ab29e0]]></item>
+		<item id="/table/table_xigua_x_user.php"><![CDATA[2b92484ef60456bc9ca952e6b97769bd]]></item>
+		<item id="/table/table_xigua_x.php"><![CDATA[be10612839b62aebefa92bb10f4c8719]]></item>
+		<item id="/table/table_xigua_x_log.php"><![CDATA[1ae551e5e6aa128487f66cab4fd265cf]]></item>
+		<item id="/fans.inc.php"><![CDATA[d723252b7e4b094f571d24c680643fb2]]></item>
+		<item id="/app.inc.php"><![CDATA[17a644133b4803b07564da767475aa4c]]></item>
+		<item id="/discuz_plugin_xigua_x_SC_UTF8.xml"><![CDATA[98fc3d187e1a5386ec30f620d7c80c14]]></item>
+		<item id="/myset.inc.php"><![CDATA[1a45589ef868ec1b6f6ade6a1de66835]]></item>
+		<item id="/static/iconfont.ttf"><![CDATA[b503c6bd156d4bcb8d772a27ffca29ac]]></item>
+		<item id="/static/iconfont.woff"><![CDATA[613d137ee340dd679079884a42b4287c]]></item>
+		<item id="/static/iconfont.eot"><![CDATA[8ee92212bcad409d7735b4fe1e41ad83]]></item>
+		<item id="/static/iconfont.css"><![CDATA[d38def485e7840ce6a6b36c1c1ed26de]]></item>
+		<item id="/static/common.css"><![CDATA[d1dc9af4f3d5856e4e4ab142d462519c]]></item>
+		<item id="/static/jquery.min.js"><![CDATA[f275906533befe949e1467498168e6cd]]></item>
+		<item id="/static/iconfont.svg"><![CDATA[97834d06706af4004542e72ecf341d4b]]></item>
+		<item id="/static/custom.js"><![CDATA[331eb4b6869fdfd6e6fc392841acdbd8]]></item>
+		<item id="/static/weui.css"><![CDATA[ff935895f558118d43ae2326ff0e87ed]]></item>
+		<item id="/lang.inc.php"><![CDATA[fc6f7592fe46ba22289d0c508b64a3f4]]></item>
+		<item id="/template.inc.php"><![CDATA[a0bac82f3bd9a5d3ea26e184d94bd12e]]></item>
+		<item id="/cron/cron_send.php"><![CDATA[28a4606b012f876433965ebb42a8dc1b]]></item>
+	</item>
+</root>

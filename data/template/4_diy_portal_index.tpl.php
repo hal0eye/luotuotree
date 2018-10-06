@@ -1,0 +1,60 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('index');
+block_get('127,125,111,112,113,106,107,124,108,110,109');?>
+﻿<?php include template('common/header'); ?><style id="diy_style" type="text/css">#framelHo22N {  border:0px none !important;}#frameuXxE8z {  border:0px none !important;}#framevC33tU {  border:0px !important;}#framec717sa {  border:0px !important;}#frameauaAi3 {  border:0px !important;}#frameqh9SCW {  border:0px !important;}#framehw440D {  border:0px !important;}#frameoCS1vU {  border:0px !important;}#portal_block_106 {  border:0px !important;}#frameDuXJHY {  border:0px !important;}#portal_block_107 {  border:0px !important;}#frameZPm707 {  border:#000000 0px !important;}#framey0afoH {  border:0px !important;}#portal_block_108 {  border:0px !important;}#framerHTGgT {  border:0px !important;}#portal_block_109 {  border:0px !important;}#framej39733 {  border:#cccccc !important;}#portal_block_124 {  border:#000000 0px !important;}#frameymeN11 {  border:#000000 0px !important;}#frame7nJnu6 {  border:#000000 0px !important;}#portal_block_124 .dxb_bc {  margin:3px !important;}#portal_block_111 {  margin-bottom:8px !important;}</style>
+<div class="wp cl">
+<div class="portal_slide"><!--[diy=diy1]--><div id="diy1" class="area"><div id="frameHz197v" class="cl_frame_bm frame move-span cl frame-1"><div id="frameHz197v_left" class="column frame-1-c"><div id="frameHz197v_left_temp" class="move-span temp"></div><?php block_display('127');?><?php block_display('125');?></div></div></div><!--[/diy]--></div>
+<div class="portal_ad mtm mbm"><!--[diy=diy2]--><div id="diy2" class="area"><div id="framej39733" class=" frame move-span cl frame-1-1-1"><div id="framej39733_left" class="column frame-1-1-1-l"><div id="framej39733_left_temp" class="move-span temp"></div><?php block_display('111');?></div><div id="framej39733_center" class="column frame-1-1-1-c"><div id="framej39733_center_temp" class="move-span temp"></div><?php block_display('112');?></div><div id="framej39733_right" class="column frame-1-1-1-r"><div id="framej39733_right_temp" class="move-span temp"></div><?php block_display('113');?></div></div></div><!--[/diy]--></div>
+<div class="col1 z">
+<!--[diy=diy3]--><div id="diy3" class="area"><div id="frameoCS1vU" class="cl_frame_bm frame move-span cl frame-1"><div id="frameoCS1vU_left" class="column frame-1-c"><div id="frameoCS1vU_left_temp" class="move-span temp"></div><?php block_display('106');?></div></div><div id="framevC33tU" class="cl_frame_bm frame move-span cl frame-1"><div id="framevC33tU_left" class="column frame-1-c"><div id="framevC33tU_left_temp" class="move-span temp"></div></div></div><div id="framelHo22N" class="cl_frame_bm frame move-span cl frame-1"><div id="framelHo22N_left" class="column frame-1-c"><div id="framelHo22N_left_temp" class="move-span temp"></div></div></div></div><!--[/diy]-->
+<div class="jquery_pagnation"></div>
+<script src="template/xinrui_vmall/js/jquery.pagnation.js" type="text/javascript"></script> 
+<script type="text/javascript">
+(function(dfsj_jq){
+var dfsj_items = dfsj_jq('.newest li');
+var dfsj_items2 = 10;
+var total = dfsj_items.size();
+total>0 && dfsj_jq('.jquery_pagnation').pagination({pagetotal:total,target:dfsj_items,perpage:dfsj_items2});
+})(jQuery);
+</script>
+</div>
+<div class="col2 y">
+<div class="sd_btn sd_box">
+<a onclick="showWindow('nav', this.href, 'get', 0)" href="forum.php?mod=misc&amp;action=nav" class="post_btn">发表新帖</a>
+<a href="plugin.php?id=dsu_paulsign:sign" class="signin">新手必读</a>
+</div>
+<div class="colu sd_box">
+<!--[diy=diy4]--><div id="diy4" class="area"><div id="frameDuXJHY" class="cl_frame_bm frame move-span cl frame-1"><div id="frameDuXJHY_left" class="column frame-1-c"><div id="frameDuXJHY_left_temp" class="move-span temp"></div><?php block_display('107');?></div></div><div id="framec717sa" class="cl_frame_bm frame move-span cl frame-1"><div id="framec717sa_left" class="column frame-1-c"><div id="framec717sa_left_temp" class="move-span temp"></div></div></div></div><!--[/diy]-->
+</div>
+<div class="photo sd_box">
+<!--[diy=diy5]--><div id="diy5" class="area"><div id="frame7nJnu6" class="cl_frame_bm frame move-span cl frame-1"><div id="frame7nJnu6_left" class="column frame-1-c"><div id="frame7nJnu6_left_temp" class="move-span temp"></div><?php block_display('124');?></div></div><div id="frameymeN11" class="cl_frame_bm frame move-span cl frame-1"><div id="frameymeN11_left" class="column frame-1-c"><div id="frameymeN11_left_temp" class="move-span temp"></div></div></div></div><!--[/diy]-->
+</div>
+<div class="expert sd_box">
+<!--[diy=diy7]--><div id="diy7" class="area"></div><!--[/diy]-->
+</div>
+<div class="hot_post black sd_box">
+<!--[diy=diy8]--><div id="diy8" class="area"><div id="framey0afoH" class="cl_frame_bm frame move-span cl frame-1"><div id="framey0afoH_left" class="column frame-1-c"><div id="framey0afoH_left_temp" class="move-span temp"></div><?php block_display('108');?></div></div><div id="frameqh9SCW" class="cl_frame_bm frame move-span cl frame-1"><div id="frameqh9SCW_left" class="column frame-1-c"><div id="frameqh9SCW_left_temp" class="move-span temp"></div></div></div></div><!--[/diy]-->
+</div>
+                <div class="sd_box">
+<!--[diy=diy8-9]--><div id="diy11" class="area"></div><!--[/diy]-->
+</div>
+<div class="sd_box">
+<!--[diy=diy9]--><div id="diy9" class="area"><div id="frameZPm707" class="cl_frame_bm frame move-span cl frame-1"><div id="frameZPm707_left" class="column frame-1-c"><div id="frameZPm707_left_temp" class="move-span temp"></div><?php block_display('110');?></div></div><div id="frameauaAi3" class="cl_frame_bm frame move-span cl frame-1"><div id="frameauaAi3_left" class="column frame-1-c"><div id="frameauaAi3_left_temp" class="move-span temp"></div></div></div></div><!--[/diy]-->
+</div>
+<div class="sd_box">
+<!--[diy=diy10]--><div id="diy10" class="area"></div><!--[/diy]-->
+</div>
+
+</div>
+</div>
+<div class="xr_lk mtw">
+<!--[diy=diy13]--><div id="diy13" class="area"><div id="framerHTGgT" class="cl_frame_bm frame move-span cl frame-1"><div id="framerHTGgT_left" class="column frame-1-c"><div id="framerHTGgT_left_temp" class="move-span temp"></div><?php block_display('109');?></div></div><div id="framehw440D" class="cl_frame_bm frame move-span cl frame-1"><div id="framehw440D_left" class="column frame-1-c"><div id="framehw440D_left_temp" class="move-span temp"></div></div></div><div id="frameuXxE8z" class="cl_frame_bm frame move-span cl frame-1"><div id="frameuXxE8z_left" class="column frame-1-c"><div id="frameuXxE8z_left_temp" class="move-span temp"></div></div></div></div><!--[/diy]-->
+</div>
+
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=tools&mini=1" ></script> 
+<script type="text/javascript" id="bdshell_js"></script> 
+<script type="text/javascript">
+var bds_config = {};
+document.getElementById('bdshell_js').src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script>
+<!-- Baidu Button END --><?php include template('common/footer'); ?>

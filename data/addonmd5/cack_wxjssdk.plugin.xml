@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[cack_wxjssdk.plugin]]></item>
+	<item id="RevisionID"><![CDATA[78956]]></item>
+	<item id="SN"><![CDATA[2018052513Bq7xTLX7Pq]]></item>
+	<item id="RevisionDateline"><![CDATA[1517608801]]></item>
+	<item id="Data">
+		<item id="/admincp_updatecache.inc.php"><![CDATA[12a8309ceced20472c9546035dc47fdf]]></item>
+		<item id="/hook.class.php"><![CDATA[e7ea6b2a0073fb061b6e5a4736476010]]></item>
+		<item id="/template/touch/jssdk.htm"><![CDATA[38976cef523669461d4458b35a6c9f18]]></item>
+		<item id="/template/jssdk.htm"><![CDATA[38976cef523669461d4458b35a6c9f18]]></item>
+		<item id="/template/mobile/jssdk.htm"><![CDATA[f39f3bd511b4f030713d22a057d6ade2]]></item>
+		<item id="/discuz_plugin_cack_wxjssdk_TC_UTF8.xml"><![CDATA[bf522d8009e08b2250ebc58c9df9f717]]></item>
+		<item id="/jssdk.php"><![CDATA[4a06f945c1de5c57c39af6c394ee2f00]]></item>
+		<item id="/discuz_plugin_cack_wxjssdk_SC_UTF8.xml"><![CDATA[d06bbabf26b788f59c2209b336428ae2]]></item>
+		<item id="/discuz_plugin_cack_wxjssdk_SC_GBK.xml"><![CDATA[4effd00543f037322fd4eb061631d4f5]]></item>
+		<item id="/pc.class.php"><![CDATA[dc4e679e5220e8b4079058faa6b4c1af]]></item>
+		<item id="/discuz_plugin_cack_wxjssdk_TC_BIG5.xml"><![CDATA[c8ef9ebbf8bee1350e01a9b2077e959d]]></item>
+	</item>
+</root>

@@ -1,0 +1,30 @@
+<?php
+$data = array (
+  'exp' => 0,
+  'data' => 
+  array (
+    'uid' => '2',
+    'email' => 'dx0e35ojehog@wechat.com',
+    'username' => '慕容雪',
+    'password' => '1f37e6e0d632e814216b08e98b2fc1fe',
+    'status' => '0',
+    'emailstatus' => '1',
+    'avatarstatus' => '1',
+    'videophotostatus' => '0',
+    'adminid' => '2',
+    'groupid' => '2',
+    'groupexpiry' => 0,
+    'extgroupids' => '',
+    'regdate' => '1527150734',
+    'credits' => 10.0,
+    'notifysound' => '0',
+    'timeoffset' => '9999',
+    'newpm' => '0',
+    'newprompt' => 0,
+    'accessmasks' => '0',
+    'allowadmincp' => '0',
+    'onlyacceptfriendpm' => '0',
+    'conisbind' => '0',
+    'freeze' => '0',
+  ),
+);

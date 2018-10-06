@@ -1,0 +1,42 @@
+<?php
+$data = array (
+  'exp' => 1533984345,
+  'data' => 
+  array (
+    'bid' => '117',
+    'blockclass' => 'html_html',
+    'blocktype' => '0',
+    'name' => '新人秀',
+    'title' => '',
+    'classname' => '',
+    'summary' => '<a href="forum-2-1.html" target="_blank"><img src="data/attachment/portal/201711/07/143823lrpidhlldxshcf6b.png" width="100%" /></a>',
+    'uid' => '1',
+    'username' => 'admin',
+    'styleid' => '0',
+    'blockstyle' => '',
+    'picwidth' => '0',
+    'picheight' => '0',
+    'target' => 'blank',
+    'dateformat' => 'Y-m-d',
+    'dateuformat' => '0',
+    'script' => 'banner',
+    'param' => 
+    array (
+      'pic' => 'data/attachment/portal/201711/07/143823lrpidhlldxshcf6b.png',
+      'url' => 'forum-2-1.html',
+      'atarget' => '_blank',
+      'width' => '100%',
+      'height' => '',
+      'text' => '',
+      'items' => '10',
+    ),
+    'shownum' => '10',
+    'cachetime' => '3600',
+    'cachetimerange' => '',
+    'punctualupdate' => '0',
+    'hidedisplay' => '0',
+    'dateline' => 1533984045,
+    'notinherited' => '0',
+    'isblank' => '0',
+  ),
+);

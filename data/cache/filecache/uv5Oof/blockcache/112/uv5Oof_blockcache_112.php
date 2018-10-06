@@ -1,0 +1,42 @@
+<?php
+$data = array (
+  'exp' => 1538832028,
+  'data' => 
+  array (
+    'bid' => '112',
+    'blockclass' => 'html_html',
+    'blocktype' => '0',
+    'name' => '图2',
+    'title' => '',
+    'classname' => '',
+    'summary' => '<a href="http://www.luotuotree.com/forum-43-1.html" target="_blank"><img src="data/attachment/portal/201806/11/190110xkchhocyttqdkhbe.png" width="100%" /></a>',
+    'uid' => '1',
+    'username' => 'admin',
+    'styleid' => '0',
+    'blockstyle' => '',
+    'picwidth' => '0',
+    'picheight' => '0',
+    'target' => 'blank',
+    'dateformat' => 'Y-m-d',
+    'dateuformat' => '0',
+    'script' => 'banner',
+    'param' => 
+    array (
+      'pic' => 'data/attachment/portal/201806/11/190110xkchhocyttqdkhbe.png',
+      'url' => 'http://www.luotuotree.com/forum-43-1.html',
+      'atarget' => '_blank',
+      'width' => '100%',
+      'height' => '',
+      'text' => '',
+      'items' => 10,
+    ),
+    'shownum' => '10',
+    'cachetime' => '0',
+    'cachetimerange' => '0,0',
+    'punctualupdate' => '0',
+    'hidedisplay' => '0',
+    'dateline' => '1528714870',
+    'notinherited' => '0',
+    'isblank' => '0',
+  ),
+);

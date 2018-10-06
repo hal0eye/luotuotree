@@ -1,0 +1,42 @@
+<?php
+$data = array (
+  'exp' => 1538832028,
+  'data' => 
+  array (
+    'bid' => '125',
+    'blockclass' => 'html_html',
+    'blocktype' => '0',
+    'name' => '首页幻灯',
+    'title' => '',
+    'classname' => 'cl_block_bm',
+    'summary' => '<img src="http://" width="100%" />',
+    'uid' => '1',
+    'username' => 'admin',
+    'styleid' => '0',
+    'blockstyle' => '',
+    'picwidth' => '0',
+    'picheight' => '0',
+    'target' => 'blank',
+    'dateformat' => 'Y-m-d',
+    'dateuformat' => '0',
+    'script' => 'banner',
+    'param' => 
+    array (
+      'pic' => 'http://',
+      'url' => '',
+      'atarget' => '_blank',
+      'width' => '100%',
+      'height' => '',
+      'text' => '',
+      'items' => 10,
+    ),
+    'shownum' => '10',
+    'cachetime' => '3600',
+    'cachetimerange' => '',
+    'punctualupdate' => '0',
+    'hidedisplay' => '0',
+    'dateline' => '1537101766',
+    'notinherited' => '0',
+    'isblank' => '0',
+  ),
+);

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[xigua_media.plugin]]></item>
+	<item id="RevisionID"><![CDATA[44236]]></item>
+	<item id="SN"><![CDATA[2018052513w8G6lW2Qls]]></item>
+	<item id="RevisionDateline"><![CDATA[1493780404]]></item>
+	<item id="Data">
+		<item id="/discuz_plugin_xigua_media_TC_BIG5.xml"><![CDATA[4b621e323395bcbdeef99b04ff9a67f2]]></item>
+		<item id="/install.php"><![CDATA[634f08b0654e036bb78a33b548dcb5f5]]></item>
+		<item id="/discuz_plugin_xigua_media_SC_GBK.xml"><![CDATA[55fb715d5aeb3f46e1485e14d0e353bc]]></item>
+		<item id="/api.class.php"><![CDATA[6deb46475d28b64c626cb83d2c7aa019]]></item>
+		<item id="/uninstall.php"><![CDATA[7783b5f96108ce5389cc1464b7056a3c]]></item>
+		<item id="/app.inc.php"><![CDATA[82053751f193cf644833c3cb6f67e6ec]]></item>
+		<item id="/discuz_plugin_xigua_media_TC_UTF8.xml"><![CDATA[282c4b03ff24ad42a6a4dd126ed2a5cc]]></item>
+		<item id="/fetchid.inc.php"><![CDATA[da2c81720fdec0dc4f1998f93289c43a]]></item>
+		<item id="/mobile.class.php"><![CDATA[5a34477594258ca407e9bf3c37d2198c]]></item>
+		<item id="/discuz_plugin_xigua_media_SC_UTF8.xml"><![CDATA[7a7af1cc6aefcc2379b1822335196acb]]></item>
+	</item>
+</root>

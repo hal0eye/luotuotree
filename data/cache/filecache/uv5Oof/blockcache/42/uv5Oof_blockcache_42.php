@@ -1,0 +1,33 @@
+<?php
+$data = array (
+  'exp' => 1527258947,
+  'data' => 
+  array (
+    'bid' => '42',
+    'blockclass' => 'html_html',
+    'blocktype' => '0',
+    'name' => '',
+    'title' => '',
+    'classname' => 'cl_block_bm',
+    'summary' => '<img src="" />',
+    'uid' => '1',
+    'username' => 'admin',
+    'styleid' => '0',
+    'blockstyle' => '',
+    'picwidth' => '0',
+    'picheight' => '0',
+    'target' => 'blank',
+    'dateformat' => 'Y-m-d',
+    'dateuformat' => '0',
+    'script' => 'banner',
+    'param' => false,
+    'shownum' => '10',
+    'cachetime' => '3600',
+    'cachetimerange' => '',
+    'punctualupdate' => '0',
+    'hidedisplay' => '0',
+    'dateline' => '1527243654',
+    'notinherited' => '0',
+    'isblank' => '0',
+  ),
+);

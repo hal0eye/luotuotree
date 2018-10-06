@@ -1,0 +1,42 @@
+<?php
+$data = array (
+  'exp' => 1527333679,
+  'data' => 
+  array (
+    'bid' => '100',
+    'blockclass' => 'html_html',
+    'blocktype' => '0',
+    'name' => '图三',
+    'title' => '',
+    'classname' => '',
+    'summary' => '<a href="http://www.teduorg.com/plugin.php?id=xigua_integralmall" target="_blank"><img src="data/attachment/portal/201804/10/172345lygytplhghyhgz11.png" width="100%" /></a>',
+    'uid' => '1',
+    'username' => 'admin',
+    'styleid' => '0',
+    'blockstyle' => '',
+    'picwidth' => '0',
+    'picheight' => '0',
+    'target' => 'blank',
+    'dateformat' => 'Y-m-d',
+    'dateuformat' => '0',
+    'script' => 'banner',
+    'param' => 
+    array (
+      'pic' => 'data/attachment/portal/201804/10/172345lygytplhghyhgz11.png',
+      'url' => 'http://www.teduorg.com/plugin.php?id=xigua_integralmall',
+      'atarget' => '_blank',
+      'width' => '100%',
+      'height' => '',
+      'text' => '',
+      'items' => '10',
+    ),
+    'shownum' => '10',
+    'cachetime' => '0',
+    'cachetimerange' => '0,0',
+    'punctualupdate' => '0',
+    'hidedisplay' => '0',
+    'dateline' => 1527333379,
+    'notinherited' => '0',
+    'isblank' => '0',
+  ),
+);
