@@ -21,4 +21,9 @@ class table_video extends discuz_table{
         return $result;
     }
 
+    public function get_video_info($id){
+        $result = DB::fetch_all("SELECT * FROM ".DB::table('video')." WHERE is_out_of_stock = 0 AND id = {$id}");
+        return $result;
+    }
+
 }
